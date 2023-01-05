@@ -5,7 +5,7 @@ body{
   top: 0;
   position: fixed;
   z-index: 2;
-  
+  background-color: rgba(24, 22, 22, 0.85);
 }
 .navbar-nav{
   padding-right: 10px;
@@ -307,7 +307,39 @@ rect{
   -webkit-overflow-scrolling: touch;
 }
 
+/* 2nd div */
 
+.servicing-div1{
+  width: 140px;
+  height: 140px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 100%;
+  align-items: center;
+}
+.servicing-img1{
+  width:100px;
+  height: 100px;
+  /* background-color: black; */
+}
+
+.ser-btns{
+  background-color: rgba(0,0,0,0.6);
+  color: #ddd2e7 ;
+}
+.view-detail-div{
+  background-color: #41043f86;
+  color: white;
+}
+
+
+/* service steps images */
+
+.ser-step-img{
+  height: 500px;
+  width: 600px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  border-radius: 1%;
+}
 
 
 
