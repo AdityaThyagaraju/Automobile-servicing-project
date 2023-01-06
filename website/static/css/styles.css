@@ -232,8 +232,11 @@ rect{
 
 /* carousel */
 .cor-img{
-  opacity: 0.8;
+  filter: brightness(40%);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  border-radius: 1%;
 }
+
 
 .custom-carousel{
   padding: 50px 200px;
@@ -313,6 +316,7 @@ rect{
   width: 140px;
   height: 140px;
   background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 100%;
   align-items: center;
 }
@@ -327,8 +331,10 @@ rect{
   color: #ddd2e7 ;
 }
 .view-detail-div{
-  background-color: #41043f86;
+  background-color: #2803277d;
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
 }
 
 
@@ -338,6 +344,7 @@ rect{
   height: 500px;
   width: 600px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  filter: brightness(70%);
   border-radius: 1%;
 }
 
@@ -359,6 +366,7 @@ rect{
   .modal-dialog .modal-content {
       padding: 1rem;
       background-color: rgba(255,255,255,0.7);
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
     }
   
