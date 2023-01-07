@@ -1,3 +1,4 @@
+
 const observer = new IntersectionObserver(function(entries){
   entries.forEach((entry)=>{
     if(entry.isIntersecting){
@@ -22,8 +23,8 @@ hidden_hor=document.querySelectorAll('.hidden-horizontal')
 hidden_hor.forEach((el)=>{observer_hor.observe(el)});
 
 
-$(document).ready(function() {             $('#loginModal').modal('show');
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+$("appointment").click(function() {
+  alert("hello");
+
+  document.getElementsByClassName("appoint-form").style.display="block";
 });
