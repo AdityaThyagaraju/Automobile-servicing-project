@@ -51,14 +51,17 @@ body{
   opacity: 1;
   filter: blur(10px);
   transform: translateY(50px);
-  transition: all 1s;
+  transition: opacity 1.5s,filter 1.5s,transform 1.5s;
+}
+
+.hidden-brightness{
+  filter: brightness(0%);
+  transition: filter 2s;
 }
 
 .hidden-horizontal{
-  opacity: 1;
-  filter: blur(5px);
-  
-  transition: all 2s;
+  transform: translateX(-30px);
+  transition: all 5s;
 }
 
 .show{
@@ -67,11 +70,13 @@ body{
   transform: translateY(0);
 }
 
-.show-horizontal{
-  opacity: 1;
-  filter: blur(0);
+.show-brightness{
+  filter: brightness(100%);
   transform: translateX(0);
-  width: 95%;
+}
+
+.show-horizontal{
+  transform: translateX(0px);
 }
 
 

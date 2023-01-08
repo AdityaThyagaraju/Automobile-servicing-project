@@ -16,20 +16,19 @@ def login():
             if check_password_hash(cust.password,pwd):
                 login_user(cust,remember=True)
                 flash('Logged in successfully',category='success')
-                return redirect(url_for('views.home'))
+                return redirect(url_for('views.customer'))
             else:
                 flash('Password incorrect',category='error')
         elif staff:
             if check_password_hash(staff.password,pwd):
                 login_user(staff,remember=True)
                 flash('Logged in successfully',category='success')
-                return redirect(url_for('views.home'))
+                return redirect(url_for('views.staff'))
             else:
                 flash('Password incorrect',category='error')
         else:
             flash('User does not exist, please register first')
-            return redirect(url_for('auth.signup'))
-    return render_template('login.html')
+    return render_template('views.home')
 
 @auth.route('/Logout')
 @login_required

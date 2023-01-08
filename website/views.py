@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template,request,flash,jsonify
+from flask import Blueprint, render_template,request,flash,jsonify,redirect,url_for
 from flask_login import current_user,login_required
-from .models import Note
+from .models import Note,Customer,CustomerVeh,ReqSer
 from . import db
 import json
 
@@ -8,6 +8,7 @@ views = Blueprint('views',__name__)
 
 @views.route('/',methods=['GET','POST'])
 def home():
+     
     if request.method == 'POST':
         note = request.form.get('Note')
         if len(note)<1:
@@ -19,14 +20,26 @@ def home():
             flash('Note added',category='success')
     return render_template("index.html")
 
-@views.route('/delete-note',methods=['POST'])
-def delete_note():
-    note = json.loads(request.data)
-    noteID = note['noteId']
-    qr_note = Note.query.get(noteID)
-    if qr_note:
-        if qr_note.user_id==current_user.id:
-            db.session.delete(qr_note)
-            db.session.commit()
-            flash('deleted note',category='success')
-            return jsonify({})
+@views.route('/customer',methods=['GET','POST'])
+def customer():
+    if request.method == 'POST':
+        if CustomerVeh.query.all()<=100:
+            brand = request.form.get('brand')
+            model = request.form.get('model')
+            chasis_no = request.form.get('ch_no')
+            req_service = request.form.getlist('req_service')
+            selected_slot = request.form.get('sel_slot')
+            cust_id = current_user.id
+            new_veh = CustomerVeh(brand=brand,model=model,ch_mo=chasis_no,sel_slot=selected_slot,cust_id=cust_id)
+            db.session.add(new_veh)
+            for ser in req_service:
+                new_ser = ReqSer(veh_id = new_veh.id,request = ser)
+                db.session.add(new_ser)
+            flash('Request applied, please wait for confirmation from our side')
+        else:
+            flash('Pending request for vehicles has overflooded, please try later',category='success')
+    return render_template('customer.html',user = current_user)
+
+@views.route('/cust-feedback',methods=['POST'])
+def feedback():
+    

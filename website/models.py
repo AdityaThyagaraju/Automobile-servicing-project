@@ -7,8 +7,27 @@ class Customer(db.Model,UserMixin):
     email = db.Column(db.String(50),unique=True)
     password = db.Column(db.String(20))
     username = db.Column(db.String(20))
+    vehicles = db.relationship('CustomerVeh')
     notes = db.relationship('Note')
 
+class CustomerVeh(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    brand = db.Column(db.String(50))
+    model = db.Column(db.String(50))
+    chasis_no = db.Column(db.Integer,primary_key=True)
+    selected_date = db.Column(db.DateTime)
+    selected_slot = db.Column(db.Integer)
+    cust_id = db.Column(db.Integer,db.ForeignKey('customer.id'))
+    accept_by_staff = db.Column(db.Integer,default=0)
+    requests = db.relationship('ReqSer')
+
+class ReqSer(db.Model):
+    veh_id = db.Column(db.Integer,db.ForeignKey('customerVeh.id'))
+    req = db.Column(db.String(50))
+
+class CustFeedback(db.Model):
+    cust_id = db.Column(db.Integer,db.ForeignKey('customer.id'))
+    feedback = db.Column(db.String(10000))
 class Staff(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     email = db.Column(db.String(50),unique=True)
