@@ -42,11 +42,11 @@ def logout():
 def signup():
     if request.method == 'POST':
         chk = request.form.get('cbtn')
-        usn = request.form.get('Username')
-        email = request.form.get('Email')
-        password = request.form.get('Password')
-        repassword = request.form.get('RePassword')
-
+        name = request.form.get('name')
+        usn = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        repassword = request.form.get('repassword')
         cust = Customer.query.filter_by(username=usn).first()
         staff = Staff.query.filter_by(username = usn).first()
         if cust or staff :
@@ -57,13 +57,13 @@ def signup():
             flash('Password doesnt match with re-entered password',category='error')
         else :
             if chk == 0:
-                new_user = Customer(email=email,password=generate_password_hash(password,method='sha256'),username=usn)
+                new_user = Customer(name=name,email=email,password=generate_password_hash(password,method='sha256'),username=usn)
                 db.session.add(new_user)
                 db.session.commit()
                 flash('Account created',category='success')
                 return redirect(url_for('views.home'))
             else :
-                new_user = Staff(email=email,password=generate_password_hash(password,method='sha256'),username=usn)
+                new_user = Staff(name=name,email=email,password=generate_password_hash(password,method='sha256'),username=usn)
                 db.session.add(new_user)
                 db.session.commit()
                 flash('Account created',category='success')
