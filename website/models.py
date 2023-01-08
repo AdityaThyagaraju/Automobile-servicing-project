@@ -4,11 +4,13 @@ from sqlalchemy.sql import func
 
 class Customer(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(20))
     email = db.Column(db.String(50),unique=True)
     password = db.Column(db.String(20))
     username = db.Column(db.String(20))
     vehicles = db.relationship('Customerveh')
     notes = db.relationship('Note')
+    bills = db.relationship('Staffbill')
 
 class Customerveh(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -33,10 +35,22 @@ class CustFeedback(db.Model):
 
 class Staff(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(20))
     email = db.Column(db.String(50),unique=True)
     password = db.Column(db.String(20))
     username = db.Column(db.String(20))
 
+class Staffbill(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    cust_id = db.Column(db.Integer,db.ForeignKey('customer.id'))
+    date = db.Column(db.DateTime(),default = func.now())
+    items = db.relationship('Items')
+
+class Items(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(50))
+    price = db.Column(db.Integer)
+    bill_id = db.Column(db.Integer,db.ForeignKey('staffbill.id'))
 
 class Note(db.Model):
     id = db.Column(db.Integer,primary_key=True)
