@@ -42,11 +42,7 @@ hidden_hor.forEach((el)=>{observer_hor.observe(el)});
 
 // modal jscript
 
-$(document).ready(function() {             $('#loginModal').modal('show');
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-});
+
 
 $(".dashboard a").click(function(){
   document.querySelector(".appoint-form").classList.toggle("appoint-form-none");
