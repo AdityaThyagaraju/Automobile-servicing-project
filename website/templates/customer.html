@@ -80,47 +80,41 @@
     <!-- 2 column grid layout with text inputs for the first and last names -->
     <div class="row mb-4">
       <div class="col">
-        <div class="form-outline">
-          <input type="text" id="form6Example1" class="form-control" />
-          <label class="form-label" for="form6Example1">First name</label>
+        <div class="form-floating">
+          <input type="text" id="form6Example1" class="form-control" name="brand" placeholder="name@example.com"/>
+          <label class="form-label" for="form6Example1">Brand</label>
         </div>
       </div>
       <div class="col">
-        <div class="form-outline">
-          <input type="text" id="form6Example2" class="form-control" />
-          <label class="form-label" for="form6Example2">Last name</label>
+        <div class="form-floating">
+          <input type="text" id="form6Example2" class="form-control" name="model" placeholder="name@example.com"/>
+          <label class="form-label" for="form6Example2">Model</label>
         </div>
       </div>
     </div>
   
     <!-- Text input -->
-    <div class="form-outline mb-4">
-      <input type="text" id="form6Example3" class="form-control" />
-      <label class="form-label" for="form6Example3">Company name</label>
+    <div class="form-floating mb-4">
+      <input type="text" id="form6Example3" class="form-control" name="chasis_no" placeholder="name@example.com"/>
+      <label class="form-label" for="form6Example3">Chasis Number</label>
     </div>
   
     <!-- Text input -->
-    <div class="form-outline mb-4">
-      <input type="text" id="form6Example4" class="form-control" />
-      <label class="form-label" for="form6Example4">Address</label>
+    <div class="form-floating mb-4">
+      <input type="text" id="form6Example4" class="form-control" name="req_service" placeholder="name@example.com"/>
+      <label class="form-label" for="form6Example4">Service Type</label>
     </div>
   
     <!-- Email input -->
-    <div class="form-outline mb-4">
-      <input type="email" id="form6Example5" class="form-control" />
-      <label class="form-label" for="form6Example5">Email</label>
-    </div>
-  
-    <!-- Number input -->
-    <div class="form-outline mb-4">
-      <input type="number" id="form6Example6" class="form-control" />
-      <label class="form-label" for="form6Example6">Phone</label>
+    <div class="form-floating mb-4">
+      <input type="email" id="form6Example5" class="form-control" name="selected_slot" placeholder="name@example.com"/>
+      <label class="form-label" for="form6Example5">Slot</label>
     </div>
   
     <!-- Message input -->
-    <div class="form-outline mb-4">
-      <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-      <label class="form-label" for="form6Example7">Additional information</label>
+    <div class="form-floating mb-4">
+      <textarea class="form-control" id="form6Example7" rows="4" placeholder="name@example.com"></textarea>
+      <label class="form-label" for="form6Example7">Any Additional Request</label>
     </div>
   
     <!-- Checkbox
@@ -133,6 +127,122 @@
     <a type="submit" class="d-flex justify-content-center btn  btn-block mb-4" style="background-image:linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">Place order</a>
   </form>
 </div>
+</div>
+
+
+
+<!-- customer-bill -->
+
+
+
+
+
+<div class="container appoint-form">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2>Invoice</h2><h3 class="pull-right">Order # 12345</h3>
+    		</div>
+    		<hr>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    				<strong>Billed To:</strong><br>
+    					John Smith<br>
+    					1234 Main<br>
+    					Apt. 4B<br>
+    					Springfield, ST 54321
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+        			<strong>Shipped To:</strong><br>
+    					Jane Smith<br>
+    					1234 Main<br>
+    					Apt. 4B<br>
+    					Springfield, ST 54321
+    				</address>
+    			</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    					<strong>Payment Method:</strong><br>
+    					Cash
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Order Date:</strong><br>
+    					March 7, 2014<br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>Order summary</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Item</strong></td>
+        							<td class="text-center"><strong></strong></td>
+        							<td class="text-center"><strong></strong></td>
+        							<td class="text-right"><strong>Price</strong></td>
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+    							<tr>
+    								<td>BS-200</td>
+    								<td class="text-center"></td>
+    								<td class="text-center"></td>
+    								<td class="text-right">$10.99</td>
+    							</tr>
+                                <tr>
+        							<td>BS-400</td>
+    								<td class="text-center"></td>
+    								<td class="text-center"></td>
+    								<td class="text-right">$60.00</td>
+    							</tr>
+                                <tr>
+            						<td>BS-1000</td>
+    								<td class="text-center"></td>
+    								<td class="text-center"></td>
+    								<td class="text-right">$600.00</td>
+    							</tr>
+    							<tr>
+    								<td class="thick-line"></td>
+    								<td class="thick-line"></td>
+    								<td class="thick-line text-center"><strong>Subtotal</strong></td>
+    								<td class="thick-line text-right">$670.99</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Shipping</strong></td>
+    								<td class="no-line text-right">$15</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Total</strong></td>
+    								<td class="no-line text-right">$685.99</td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
 </div>
 {%endblock%}
 
