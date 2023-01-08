@@ -1,0 +1,138 @@
+{%extends "base.html"%}
+{%block title%}α Motor Works{%endblock%}
+{%block navbarlist%}
+<ul class="navbar-nav ms-auto me-3">
+  <li class="dropdown custom-accicon-div active d-flex justify-content-center align-items-center ">
+    <a href="#" class="custom-accicon fa-solid fa-user" data-bs-toggle="dropdown" aria-expanded="false"></a>
+    <div class="dropdown-menu">
+        <div class="row g-0 custom-cust-card ">
+            <div class="col-sm-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <i class="custom-accicon-form fa-solid fa-user"></i>
+              <h5>Marie Horwitz</h5>
+              <p>Web Designer</p>
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-sm-8">
+              <div class="card-body p-4">
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p class="text-muted">info@example.com</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Phone</h6>
+                    <p class="text-muted">123 456 789</p>
+                  </div>
+                </div>
+                <h6>Projects</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Recent</h6>
+                    <p class="text-muted">Lorem ipsum</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Most Viewed</h6>
+                    <p class="text-muted">Dolor sit amet</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-start">
+                  <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                  <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                  <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </li>
+  <li class="nav-item" style="padding: 0%;">
+    <a class="nav-link" href="/Logout" style="display:inline-block; padding-left: 1px;">Logout</a>
+  </li>
+</ul>
+
+
+{%endblock%}
+{%block content%}
+<div class="row">
+<div class="dashboard " >
+    <ul style="margin-top: 150px; display: inline-block; list-style: none;">
+        <li>
+            <a id="appointment" href="#">Add Vehicle</a>
+        </li>
+        <li>
+            <a href="bill">View Bill</a>
+        </li>
+        <li>
+            <a href="feedback">Feedback</a>
+        </li>
+    </ul>
+</div>
+
+
+<!-- appointment-form -->
+<div class="" style="margin-top: 100px;">
+<form class="appoint-form ">
+    <h3 class="d-flex justify-content-center pb-4">Book A Slot</h3>
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class="row mb-4">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="form6Example1" class="form-control" />
+          <label class="form-label" for="form6Example1">First name</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="form6Example2" class="form-control" />
+          <label class="form-label" for="form6Example2">Last name</label>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+      <input type="text" id="form6Example3" class="form-control" />
+      <label class="form-label" for="form6Example3">Company name</label>
+    </div>
+  
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+      <input type="text" id="form6Example4" class="form-control" />
+      <label class="form-label" for="form6Example4">Address</label>
+    </div>
+  
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input type="email" id="form6Example5" class="form-control" />
+      <label class="form-label" for="form6Example5">Email</label>
+    </div>
+  
+    <!-- Number input -->
+    <div class="form-outline mb-4">
+      <input type="number" id="form6Example6" class="form-control" />
+      <label class="form-label" for="form6Example6">Phone</label>
+    </div>
+  
+    <!-- Message input -->
+    <div class="form-outline mb-4">
+      <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+      <label class="form-label" for="form6Example7">Additional information</label>
+    </div>
+  
+    <!-- Checkbox
+    <div class="form-check d-flex justify-content-center mb-4">
+      <input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" checked />
+      <label class="form-check-label" for="form6Example8"> Create an account? </label>
+    </div> -->
+  
+    <!-- Submit button -->
+    <a type="submit" class="d-flex justify-content-center btn  btn-block mb-4" style="background-image:linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">Place order</a>
+  </form>
+</div>
+</div>
+{%endblock%}
+

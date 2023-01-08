@@ -1,3 +1,4 @@
+
 // Animation for blur and position
 
 const observer = new IntersectionObserver(function(entries){
@@ -41,9 +42,8 @@ hidden_hor.forEach((el)=>{observer_hor.observe(el)});
 
 // modal jscript
 
-$(document).ready(function() {             
-  $('#loginModal').modal('show');
+$(document).ready(function() {             $('#loginModal').modal('show');
   $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip()
   })
 });
