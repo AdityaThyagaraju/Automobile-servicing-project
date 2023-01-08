@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template,request,flash,jsonify,redirect,url_for
 from flask_login import current_user,login_required
-from .models import Note,Customer,CustomerVeh,ReqSer
+from .models import Note,Customer,Customerveh,ReqSer
 from . import db
 import json
 
@@ -22,14 +22,14 @@ def home():
 @views.route('/customer',methods=['GET','POST'])
 def customer():
     if request.method == 'POST':
-        if CustomerVeh.query.all()<=100:
+        if Customerveh.query.all()<=100:
             brand = request.form.get('brand')
             model = request.form.get('model')
             chasis_no = request.form.get('ch_no')
             req_service = request.form.getlist('req_service')
             selected_slot = request.form.get('sel_slot')
             cust_id = current_user.id
-            new_veh = CustomerVeh(brand=brand,model=model,ch_mo=chasis_no,sel_slot=selected_slot,cust_id=cust_id)
+            new_veh = Customerveh(brand=brand,model=model,ch_mo=chasis_no,sel_slot=selected_slot,cust_id=cust_id)
             db.session.add(new_veh)
             for ser in req_service:
                 new_ser = ReqSer(veh_id = new_veh.id,request = ser)
@@ -39,6 +39,6 @@ def customer():
             flash('Pending request for vehicles has overflooded, please try later',category='success')
     return render_template('customer.html',user = current_user)
 
-@views.route('/cust-feedback',methods=['POST'])
-def feedback():
+# @views.route('/cust-feedback',methods=['POST'])
+# def feedback():
     

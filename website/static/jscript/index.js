@@ -47,3 +47,7 @@ $(document).ready(function() {             $('#loginModal').modal('show');
     $('[data-toggle="tooltip"]').tooltip()
   })
 });
+
+$(".dashboard a").click(function(){
+  document.querySelector(".appoint-form").classList.toggle("appoint-form-none");
+})

@@ -137,7 +137,7 @@ body{
   font-size: 56px;
   margin: 0 15px;
   color: white;
-  display: inline-block;
+  display: block;
   float: left;
 }
 .snip1265 .plan-title {
@@ -515,10 +515,13 @@ rect{
 
 
 .appoint-form{
-  display: none;
   border-radius: 1%;
   padding: 3%;
   margin-left: 500px;
   width: 750px;
   background-color: #ffffff;
+}
+
+.appoint-form-none{
+    display: none;
 }
