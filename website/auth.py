@@ -15,17 +15,17 @@ def login():
             if user.role=='C':
                 if check_password_hash(user.password,pwd):
                     login_user(user,remember=True)
-                    flash('Logged in successfully',category='success')
+                    flash(['Login','Logged in successfully'],category='success')
                     return redirect(url_for('views.customer'))
                 else:
-                    flash('Password incorrect',category='error')
+                    flash(['Login','Password incorrect'],category='error')
             elif user.role=='S':
                 if check_password_hash(user.password,pwd):
                     login_user(user,remember=True)
-                    flash('Logged in successfully',category='success')
+                    flash(['Login','Logged in successfully'],category='success')
                     return redirect(url_for('views.staff'))
                 else:
-                    flash('Password incorrect',category='error')
+                    flash(['Login','Password incorrect'],category='error')
         else:
             flash(['Login','User does not exist, please register first'])
     return redirect(url_for('views.home'))
@@ -34,7 +34,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('Logged out succesfully',category='success')    
+    flash(['Login','Logged out succesfully'],category='success')    
     return redirect(url_for('auth.login'))
 
 
@@ -49,7 +49,7 @@ def signup():
         repassword = request.form.get('repassword')
         user = User.query.filter_by(username=usn).first()
         if user :
-            flash('Email already exist',category='error')
+            flash(['Sign up','Email already exist'],category='error')
         elif len(usn)>20 and len(usn)<8:
             flash(['Sign up','Not a valid username, length is not within limits'],category='error')
         elif password!=repassword:
