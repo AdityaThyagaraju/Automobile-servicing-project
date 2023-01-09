@@ -133,107 +133,112 @@
 
 <!-- customer-bill -->
 
-
-
-
+{%if user.bills %}
 
 <div class="container appoint-form">
-    <div class="row">
-        <div class="col-xs-12">
-    		<div class="invoice-title">
-    			<h2>Invoice</h2><h3 class="pull-right">Order # {{user.bills.id}}</h3>
-    		</div>
-    		<hr>
-    		<div class="row">
-    			<div class="col-xs-6">
-    				<address>
-    				<strong>Billed To:</strong><br>
-    					{{user.name}}<br>
-    					{{user.email}}<br>
-    				</address>
-    			</div>
-    			<div class="col-xs-6 text-right">
-    				<address>
-              <strong>Shipped To:</strong><br>
-                {{user.name}}<br>
-                {{user.email}}<br>
-              </address>
-    			</div>
-    		</div>
-    		<div class="row">
-    			<div class="col-xs-6">
-    				<address>
-    					<strong>Payment Method:</strong><br>
-    					Cash
-    				</address>
-    			</div>
-    			<div class="col-xs-6 text-right">
-    				<address>
-    					<strong>Order Date:</strong><br>
-    					{{user.bills.date}}<br><br>
-    				</address>
-    			</div>
-    		</div>
-    	</div>
+  <div class="row">
+      <div class="col-xs-12">
+      <div class="invoice-title">
+        <h2>Invoice</h2><h3 class="pull-right">Order # {{user.bills.id}}</h3>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-6">
+          <address>
+          <strong>Billed To:</strong><br>
+            {{user.name}}<br>
+            {{user.email}}<br>
+          </address>
+        </div>
+        <div class="col-xs-6 text-right">
+          <address>
+            <strong>Shipped To:</strong><br>
+              {{user.name}}<br>
+              {{user.email}}<br>
+            </address>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <address>
+            <strong>Payment Method:</strong><br>
+            Cash
+          </address>
+        </div>
+        <div class="col-xs-6 text-right">
+          <address>
+            <strong>Order Date:</strong><br>
+            {{user.bills.date}}<br><br>
+          </address>
+        </div>
+      </div>
     </div>
-    
-    <div class="row">
-    	<div class="col-md-12">
-    		<div class="panel panel-default">
-    			<div class="panel-heading">
-    				<h3 class="panel-title"><strong>Order summary</strong></h3>
-    			</div>
-    			<div class="panel-body">
-    				<div class="table-responsive">
-    					<table class="table table-condensed">
-    						<thead>
-                                <tr>
-        							<td><strong>Item</strong></td>
-        							<td class="text-center"><strong></strong></td>
-        							<td class="text-center"><strong></strong></td>
-        							<td class="text-right"><strong>Price</strong></td>
-                                </tr>
-    						</thead>
-    						<tbody>
-    							{%for items in user.bills.items%}
-    							<tr>
-    								<td>{{items.name}}</td>
-    								<td class="text-center"></td>
-    								<td class="text-center"></td>
-    								<td class="text-right">{{items.price}}</td>
-    							</tr>
-                  {%endfor%}
-    							<tr>
-    								<td class="thick-line"></td>
-    								<td class="thick-line"></td>
-    								<td class="thick-line text-center"><strong>Subtotal</strong></td>
-    								<td class="thick-line text-right">
-                      {%set sum = 0 %}
-                      {%for price in user.bills.items.price%}
-                      {%set sum = sum + price%}
-                      {%endfor%}
-                      Rs{{sum}}
-                    </td>
-    							</tr>
-    							<tr>
-    								<td class="no-line"></td>
-    								<td class="no-line"></td>
-    								<td class="no-line text-center"><strong>Shipping</strong></td>
-    								<td class="no-line text-right">Rs{%set rand =(range(1, 51) | random) %}</td>
-    							</tr>
-    							<tr>
-    								<td class="no-line"></td>
-    								<td class="no-line"></td>
-    								<td class="no-line text-center"><strong>Total</strong></td>
-    								<td class="no-line text-right">Rs{{sum+rand}}</td>
-    							</tr>
-    						</tbody>
-    					</table>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Order summary</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-condensed">
+              <thead>
+                              <tr>
+                    <td><strong>Item</strong></td>
+                    <td class="text-center"><strong></strong></td>
+                    <td class="text-center"><strong></strong></td>
+                    <td class="text-right"><strong>Price</strong></td>
+                              </tr>
+              </thead>
+              <tbody>
+                {%for items in user.bills.items%}
+                <tr>
+                  <td>{{items.name}}</td>
+                  <td class="text-center"></td>
+                  <td class="text-center"></td>
+                  <td class="text-right">{{items.price}}</td>
+                </tr>
+                {%endfor%}
+                <tr>
+                  <td class="thick-line"></td>
+                  <td class="thick-line"></td>
+                  <td class="thick-line text-center"><strong>Subtotal</strong></td>
+                  <td class="thick-line text-right">
+                    {%set sum = 0 %}
+                    {%for price in user.bills.items.price%}
+                    {%set sum = sum + price%}
+                    {%endfor%}
+                    Rs{{sum}}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="no-line"></td>
+                  <td class="no-line"></td>
+                  <td class="no-line text-center"><strong>Shipping</strong></td>
+                  <td class="no-line text-right">Rs{%set rand =(range(1, 51) | random) %}</td>
+                </tr>
+                <tr>
+                  <td class="no-line"></td>
+                  <td class="no-line"></td>
+                  <td class="no-line text-center"><strong>Total</strong></td>
+                  <td class="no-line text-right">Rs{{sum+rand}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
+
+{%endif%}
+
+
+
+
+
 {%endblock%}
 

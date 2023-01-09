@@ -8,8 +8,8 @@ auth = Blueprint('auth',__name__)
 @auth.route('/Login',methods=['GET','POST'])
 def login():
     if request.method == 'POST':
-        usn = request.form.get('Username')
-        pwd = request.form.get('Password')
+        usn = request.form.get('username')
+        pwd = request.form.get('password')
         user = User.query.filter_by(username=usn).first()
         if user:
             if user.role=='C':
@@ -55,13 +55,13 @@ def signup():
         elif password!=repassword:
             flash(['Sign up','Password doesnt match with re-entered password'],category='error')
         else :
-            if chk == 0:
+            if chk == '0':
                 new_user = User(name=name,role='C',email=email,password=generate_password_hash(password,method='sha256'),username=usn)
                 db.session.add(new_user)
                 db.session.commit()
                 flash(['Sign up','Account created'],category='success')
                 return redirect(url_for('views.home'))
-            else :
+            elif chk == '1' :
                 new_user = User(name=name,role='S',email=email,password=generate_password_hash(password,method='sha256'),username=usn)
                 db.session.add(new_user)
                 db.session.commit()

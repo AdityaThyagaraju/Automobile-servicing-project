@@ -39,6 +39,9 @@ def customer():
             flash('Pending request for vehicles has overflooded, please try later',category='success')
     return render_template('customer.html',user = current_user)
 
-# @views.route('/cust-feedback',methods=['POST'])
-# def feedback():
+# @views.route('/customerveh',methods=['POST'])
+# def addveh():
+#     brand = request.form.get('brand')
+#     model = request.form.get('model')
+#     ch_no = request.form.get('chasis_no')
     
