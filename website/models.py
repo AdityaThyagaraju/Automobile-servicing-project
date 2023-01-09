@@ -2,9 +2,10 @@ from flask_login import UserMixin
 from . import db
 from sqlalchemy.sql import func
 
-class Customer(db.Model,UserMixin):
+class User(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(20))
+    role = db.Column(db.String(10))
     email = db.Column(db.String(50),unique=True)
     password = db.Column(db.String(20))
     username = db.Column(db.String(20))
@@ -19,7 +20,7 @@ class Customerveh(db.Model):
     chasis_no = db.Column(db.Integer,primary_key=True)
     selected_date = db.Column(db.DateTime)
     selected_slot = db.Column(db.Integer)
-    cust_id = db.Column(db.Integer,db.ForeignKey('customer.id'))
+    cust_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     accept_by_staff = db.Column(db.Integer,default=0)
     requests = db.relationship('ReqSer')
 
@@ -30,19 +31,12 @@ class ReqSer(db.Model):
 
 class CustFeedback(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    cust_id = db.Column(db.Integer,db.ForeignKey('customer.id'))
+    cust_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     feedback = db.Column(db.String(10000))
-
-class Staff(db.Model,UserMixin):
-    id = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.String(20))
-    email = db.Column(db.String(50),unique=True)
-    password = db.Column(db.String(20))
-    username = db.Column(db.String(20))
 
 class Staffbill(db.Model):
     id = db.Column(db.Integer,primary_key=True)
-    cust_id = db.Column(db.Integer,db.ForeignKey('customer.id'))
+    cust_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     date = db.Column(db.DateTime(),default = func.now())
     items = db.relationship('Items')
 
@@ -56,4 +50,4 @@ class Note(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     data = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True),default=func.now())
-    user_id = db.Column(db.Integer,db.ForeignKey('customer.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))

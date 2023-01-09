@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template,request,flash,jsonify,redirect,url_for
 from flask_login import current_user,login_required
-from .models import Note,Customer,Customerveh,ReqSer
+from .models import Note,User,Customerveh,ReqSer
 from . import db
 import json
 
