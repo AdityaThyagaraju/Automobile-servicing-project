@@ -45,3 +45,12 @@ hidden_hor.forEach((el)=>{observer_hor.observe(el)});
 $(".dashboard a").click(function(){
   document.querySelector(".appoint-form").classList.toggle("appoint-form-none");
 })
+
+
+
+// msgp-popup
+
+$("#loginmsg button").click(function(){
+  document.querySelector("#loginmsg")
+}
+)

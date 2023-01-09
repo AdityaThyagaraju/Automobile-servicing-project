@@ -27,8 +27,8 @@ def login():
                 else:
                     flash('Password incorrect',category='error')
         else:
-            flash('User does not exist, please register first')
-    return render_template('views.home')
+            flash(['Login','User does not exist, please register first'])
+    return redirect(url_for('views.home'))
 
 @auth.route('/Logout')
 @login_required
@@ -51,20 +51,20 @@ def signup():
         if user :
             flash('Email already exist',category='error')
         elif len(usn)>20 and len(usn)<8:
-            flash('Not a valid username, length is not within limits',category='error')
+            flash(['Sign up','Not a valid username, length is not within limits'],category='error')
         elif password!=repassword:
-            flash('Password doesnt match with re-entered password',category='error')
+            flash(['Sign up','Password doesnt match with re-entered password'],category='error')
         else :
             if chk == 0:
                 new_user = User(name=name,role='C',email=email,password=generate_password_hash(password,method='sha256'),username=usn)
                 db.session.add(new_user)
                 db.session.commit()
-                flash('Account created',category='success')
+                flash(['Sign up','Account created'],category='success')
                 return redirect(url_for('views.home'))
             else :
                 new_user = User(name=name,role='S',email=email,password=generate_password_hash(password,method='sha256'),username=usn)
                 db.session.add(new_user)
                 db.session.commit()
-                flash('Account created',category='success')
+                flash(['Sign up','Account created'],category='success')
                 return redirect(url_for('views.home'))
-    return render_template('signup.html')
+    return render_template('index.html')

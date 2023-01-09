@@ -32,20 +32,22 @@
 </div>
 
 <!-- login message -->
-{%with messages = get_flashed_messages(with_categories=true)%}
+{%with messages = get_flashed_messages()%}
 {%for message in messages%}
 {%if message%}
-<div class="modal active fade bd-example-modal-sm show" id="loginmsg" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
-  <div class=" modal-dialog modal-sm">
+<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsg" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
+  <div class=" modal-dialog modal-sm d-flex ">
     <div class=" modal-content custom-modal1" >
-      <h3>Sign up</h3>
+      <button type="button" class="btn ms-auto" data-bs-dismiss="alert" >&times;</button>
+      <h3 style="display: inline;">{{message[0]}} </h3>
       <hr>
-      <p>{{message}}</p>
+      <p>{{message[1]}}</p>
     </div>
   </div>
 </div>
 {%endif%}
 {%endfor%}
+{%set messages=none%}
 {%endwith%}
 
 
@@ -396,12 +398,12 @@
         <div class="d-flex flex-column text-center">
           <form action="/Login" method="post">
             <div class="form-group">
-              <input type="text" class="form-control" id="email1"placeholder="Username" name="username">
+              <input type="text" class="form-control" id="email1"placeholder="Username" name="username" required>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Password" name="password">
+              <input type="password" class="form-control" id="password1" placeholder="Password" name="password" required>
             </div>
-            <a href="" class="btn btn-toolbar d-flex btn-round justify-content-center mt-5">login</a>
+            <button type="submit" class="btn btn-toolbar d-flex btn-round justify-content-center mt-5 w-100">Login</button>
           </form>
           
           <div class="text-center text-muted delimiter">or use a social network</div>
@@ -445,34 +447,35 @@
         <div class="d-flex flex-column text-center">
           <form action="/Signup" method="post">
             
-            <input type="radio" class="btn-check" id="custbtn" name="cbtn" checked autocomplete="on" value="0">
-            <label class="btn btn-outline-secondary" for="custbtn" >Customer</label>
-            <input type="radio" class="btn-check" id="staffbtn" name="cbtn"  checked autocomplete="off" value="1">
+            <input type="radio" class="btn-check" id="custbtn" name="cbtn" checked  value="0">
+            <label class="btn btn-outline-secondary" for="custbtn" checked>Customer</label>
+            <input type="radio" class="btn-check" id="staffbtn" name="cbtn"    value="1">
             <label class="btn btn-outline-secondary"  for="staffbtn" >Staff</label><br>
            
+            <div class="form-group">
+              <input type="text" class="form-control" id="email1"placeholder="Enter name" name="name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="email1"placeholder="Enter email" name="email" required>
+            </div>
             
             <div class="form-group">
-              <input type="email" class="form-control" id="email1"placeholder="Enter email" name="email">
+              <input type="text" class="form-control" id="password1" placeholder="Enter username" name="username" required>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="email1"placeholder="Enter name" name="name">
+              <input type="password" class="form-control" id="password1" placeholder="Enter password" name="password" required>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="password1" placeholder="Enter username" name="username">
+              <input type="password" class="form-control" id="password1" placeholder="Re-enter password" name="repassword" required>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Enter password" name="password">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Re-enter password" name="repassword">
-            </div>
-            <button type="submit" class="btn btn-toolbar d-flex btn-round justify-content-center mt-5">Sign up</button>
+            <button type="submit" class="btn btn-toolbar d-flex btn-round justify-content-center mt-5 w-100">Sign up</button>
           </form>
           
           
       </div>
     </div>
       <div class="modal-footer d-flex justify-content-center">
+        
         <div class="signup-section">Already Registered? <a data-bs-target="#loginModal" data-bs-toggle="modal" href="" class="text-color"> Login</a>.</div>
       </div>
   </div>
