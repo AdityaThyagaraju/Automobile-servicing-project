@@ -460,7 +460,7 @@ rect{
 
 .gradient-custom {
   
-  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+  background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
   }
 
 
@@ -481,8 +481,9 @@ rect{
 }
 
 .custom-cust-card{
-  background-color: rgba(255, 255, 255, 0.705); 
+  background-color: rgba(0, 0, 0, 0.858); 
   border-radius: 2%;
+  color: white;
 }
 
 .fab{
@@ -491,10 +492,9 @@ rect{
 
 
 .dashboard{
-  position: fixed;
-  height: 800px;
-  width: 250px;
-  background-color: rgba(86, 86, 86, 0.659);
+  /* position: relative; */
+  min-height: 695px;
+  background-color: rgba(86, 86, 86, 0.3);
   padding-top: 150px;
 }
 
@@ -503,6 +503,7 @@ rect{
   text-decoration: none;
   font-size: x-large;
   line-height: 50px;
+  
 }
 
 
@@ -514,16 +515,37 @@ rect{
 }
 
 
+/* init-card */
+.init-card{
+  height: 212px;
+  text-align: center;
+
+}
+
+
 .appoint-form{
   border-radius: 1%;
   padding: 3%;
-  margin-left: 500px;
+  /* margin-left: 500px; */
   width: 750px;
   background-color: #ffffffa6;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
 }
 
 .appoint-form-none{
     display: none;
+}
+
+#cust-body{
+  background-image: linear-gradient(62deg, #8ec5fced 0%, #e0c3fcea 100%);
+}
+
+
+
+/* nothing-card */
+.nothing-card{
+  height: 212px;
 }
 
 

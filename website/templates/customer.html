@@ -10,7 +10,7 @@
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
               <i class="custom-accicon-form fa-solid fa-user"></i>
               <h5>Marie Horwitz</h5>
-              <p>Web Designer</p>
+              <p>Customer</p>
               <i class="far fa-edit mb-5"></i>
             </div>
             <div class="col-sm-8">
@@ -20,11 +20,11 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Email</h6>
-                    <p class="text-muted">info@example.com</p>
+                    <p >info@example.com</p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Phone</h6>
-                    <p class="text-muted">123 456 789</p>
+                    <p >123 456 789</p>
                   </div>
                 </div>
                 <h6>Projects</h6>
@@ -32,11 +32,11 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Recent</h6>
-                    <p class="text-muted">Lorem ipsum</p>
+                    <p >Lorem ipsum</p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Most Viewed</h6>
-                    <p class="text-muted">Dolor sit amet</p>
+                    <p>Dolor sit amet</p>
                   </div>
                 </div>
                 <div class="d-flex justify-content-start">
@@ -57,9 +57,33 @@
 
 {%endblock%}
 {%block content%}
+<!-- login message -->
+{%with messages = get_flashed_messages()%}
+{%for message in messages%}
+{%if message%}
+<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsg" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
+  <div class=" modal-dialog modal-sm d-flex ">
+    <div class=" modal-content custom-modal1" >
+      <button type="button" class="btn ms-auto" data-bs-dismiss="alert" >&times;</button>
+      <h3 style="display: inline;">{{message[0]}} </h3>
+      <hr>
+      <p>{{message[1]}}</p>
+    </div>
+  </div>
+</div>
+{%endif%}
+{%endfor%}
+{%set messages=none%}
+{%endwith%}
+
+
+
+
+
 <div class="row">
-<div class="dashboard " >
-  <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
+<div class="dashboard col-sm-3" >
+  <div style="position: fixed;">
+    <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
     <ul style=" display: inline-block; list-style: none;">
         <li>
             <a id="appointment" href="#">Add Vehicle</a>
@@ -71,21 +95,44 @@
             <a id="payment-dash" href="#">Payment</a>
         </li>
     </ul>
+  </div>
 </div>
+<div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
 
-<!-- alert-div -->
-<div class="alert appoint-form" id="request-alert" style="margin-top: 100px;">
+
+
+
+<!-- init-card -->
+
+  <!-- <div class="init-card appoint-form " id="init-card-id" >
+    <h3>You have not added any vehicles recently <br> Add a vehicle right now</h3><br>
+    <a href="#" class="btn btn-outline-dark" >Proceed</a>
+  </div> -->
+
+
+  <!-- alert-div -->
+
+
+<div class="alert appoint-form appoint-form-none" id="request-alert" >
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quos vero, repudiandae aspernatur deserunt sed aperiam asperiores maiores illo, nostrum commodi voluptatum dolore perferendis placeat autem minima! Non, labore quis.</p>
+  <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
+</div>
+
+
+<div class="nothing-card appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-bill" >
+  <h3>You have not added any vehicles yet so no bills </h3>
 </div>
 
 
 
-
+<div class="nothing-card appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-payment" >
+  <h3>No payment due</h3>  
+</div>
 
 
 
 <!-- appointment-form -->
-<div class="" style="margin-top: 100px;">
+<div class="" style="margin-top: 150px; margin-bottom: 100px;">
 <form class="appoint-form appoint-form-none" id="request-form">
     <h3 class="d-flex justify-content-center pb-4">Book A Slot</h3>
     <!-- 2 column grid layout with text inputs for the first and last names -->
@@ -176,7 +223,7 @@
     <a type="submit" class="d-flex justify-content-center btn  btn-block mb-4" style="background-image:linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">Place order</a>
   </form>
 </div>
-</div>
+
 
 
 
@@ -286,7 +333,7 @@
 {%endif%}
 
 <!-- Payment -->
-<div class="container appoint-form appoint-form-none" id="payment-input">
+<div class="container appoint-form appoint-form-none" id="payment-input" style="margin-top: 150px; margin-bottom: 100px;">
   <div class="row">
       <div class="col-lg-4 mb-lg-0 mb-3">
           <div class="card p-3">
@@ -439,11 +486,22 @@
           </div>
       </div>
       <div class="col-12">
+        <br>
+        <label class="form-label" for="form6Example7">Feedback</label>
+        <textarea class="form-control" id="form6Example7" rows="4" placeholder="Only good feedbacks,negative feedbacks will be ignored"></textarea>
+      
+      </div>
+      <div class="col-12">
           <div class="btn btn-primary payment">
               Make Payment
           </div>
       </div>
+      
   </div>
+</div>
+
+</div>
+
 </div>
 
 
