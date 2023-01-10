@@ -10,7 +10,7 @@
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
               <i class="custom-accicon-form fa-solid fa-user"></i>
               <h5>Marie Horwitz</h5>
-              <p>Web Designer</p>
+              <p>Customer</p>
               <i class="far fa-edit mb-5"></i>
             </div>
             <div class="col-sm-8">
@@ -20,11 +20,11 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Email</h6>
-                    <p class="text-muted">info@example.com</p>
+                    <p >info@example.com</p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Phone</h6>
-                    <p class="text-muted">123 456 789</p>
+                    <p >123 456 789</p>
                   </div>
                 </div>
                 <h6>Projects</h6>
@@ -32,11 +32,11 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Recent</h6>
-                    <p class="text-muted">Lorem ipsum</p>
+                    <p >Lorem ipsum</p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Most Viewed</h6>
-                    <p class="text-muted">Dolor sit amet</p>
+                    <p>Dolor sit amet</p>
                   </div>
                 </div>
                 <div class="d-flex justify-content-start">
@@ -57,25 +57,83 @@
 
 {%endblock%}
 {%block content%}
+<!-- login message -->
+{%with messages = get_flashed_messages()%}
+{%for message in messages%}
+{%if message%}
+<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsg" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
+  <div class=" modal-dialog modal-sm d-flex ">
+    <div class=" modal-content custom-modal1" >
+      <button type="button" class="btn ms-auto" data-bs-dismiss="alert" >&times;</button>
+      <h3 style="display: inline;">{{message[0]}} </h3>
+      <hr>
+      <p>{{message[1]}}</p>
+    </div>
+  </div>
+</div>
+{%endif%}
+{%endfor%}
+{%set messages=none%}
+{%endwith%}
+
+
+
+
+
 <div class="row">
-<div class="dashboard " >
-    <ul style="margin-top: 150px; display: inline-block; list-style: none;">
+<div class="dashboard col-sm-3" >
+  <div style="position: fixed;">
+    <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
+    <ul style=" display: inline-block; list-style: none;">
         <li>
             <a id="appointment" href="#">Add Vehicle</a>
         </li>
         <li>
-            <a href="bill">View Bill</a>
+            <a href="#">View Bill</a>
         </li>
         <li>
-            <a href="feedback">Feedback</a>
+            <a id="payment-dash" href="#">Payment</a>
         </li>
     </ul>
+  </div>
+</div>
+<div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
+
+
+
+
+<!-- init-card -->
+
+  <!-- <div class="init-card appoint-form " id="init-card-id" >
+    <h3>You have not added any vehicles recently <br> Add a vehicle right now</h3><br>
+    <a href="#" class="btn btn-outline-dark" >Proceed</a>
+  </div> -->
+
+
+  <!-- alert-div -->
+
+
+<div class="alert appoint-form appoint-form-none" id="request-alert" >
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quos vero, repudiandae aspernatur deserunt sed aperiam asperiores maiores illo, nostrum commodi voluptatum dolore perferendis placeat autem minima! Non, labore quis.</p>
+  <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
 </div>
 
 
+<div class="nothing-card appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-bill" >
+  <h3>You have not added any vehicles yet so no bills </h3>
+</div>
+
+
+
+<div class="nothing-card appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-payment" >
+  <h3>No payment due</h3>  
+</div>
+
+
+
 <!-- appointment-form -->
-<div class="" style="margin-top: 100px;">
-<form class="appoint-form appoint-form-none">
+<div class="" style="margin-top: 150px; margin-bottom: 100px;">
+<form class="appoint-form appoint-form-none" id="request-form">
     <h3 class="d-flex justify-content-center pb-4">Book A Slot</h3>
     <!-- 2 column grid layout with text inputs for the first and last names -->
     <div class="row mb-4">
@@ -100,17 +158,55 @@
     </div>
   
     <!-- Text input -->
-    <div class="form-floating mb-4">
+    <!-- <div class="form-floating mb-4">
       <input type="checkbox" id="form6Example4" class="form-control" name="req_service" placeholder="name@example.com"/>
       <label class="form-label" for="form6Example4">Service Type</label>
+      <input type="check">
+    </div> -->
+    <div class="form-control">
+      <h6>Select Service</h6>
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="checkbox" id="check1" name="service" value="Oil Replace">Oil Replace
+          <br>
+          <input type="checkbox" id="check1" name="service" value="Air Filter">Air Filter
+          <br>
+          <input type="checkbox" id="check1" name="service" value="Battery">Battery
+          <br>
+          <input type="checkbox" id="check1" name="service" value="Spark Plug">Spark Plug
+        </div>
+        
+        <div class="col-sm-6">
+          <input type="checkbox" id="check1" name="service" value="Fuel Filter">Fuel Filter
+          <br>
+          <input type="checkbox" id="check1" name="service" value="Body Wash">Body Wash
+          <br>
+          <input type="checkbox" id="check1" name="service" value="Wheel Alignment">Wheel Alignment
+          <br>
+          <input type="checkbox" id="check1" name="service" value="Wheel Balance">Wheel Balance
+        </div>
+          
+       
+      </div>
+
     </div>
-  
-    <!-- Email input -->
-    <div class="form-floating mb-4">
-      <input type="email" id="form6Example5" class="form-control" name="selected_slot" placeholder="name@example.com"/>
-      <label class="form-label" for="form6Example5">Slot</label>
+    <br>
+    <!-- slot input -->
+    <!-- <i class="bi bi-calendar"></i> -->
+    <div class="coc-form">
+      <div class="coc-block-row">
+        <label class="coc-block-label" for="dateofbirth">Select Date</label>
+        <div class="coc-block">
+          <input class="form-control" type="date" name="seldate" id="dateofbirth">
+        </div>
+      </div>
     </div>
-  
+    <br>
+
+
+
+    
+    
     <!-- Message input -->
     <div class="form-floating mb-4">
       <textarea class="form-control" id="form6Example7" rows="4" placeholder="name@example.com"></textarea>
@@ -127,7 +223,7 @@
     <a type="submit" class="d-flex justify-content-center btn  btn-block mb-4" style="background-image:linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">Place order</a>
   </form>
 </div>
-</div>
+
 
 
 
@@ -237,7 +333,177 @@
 
 {%endif%}
 
+<!-- Payment -->
+<div class="container appoint-form appoint-form-none" id="payment-input" style="margin-top: 150px; margin-bottom: 100px;">
+  <div class="row">
+      <div class="col-lg-4 mb-lg-0 mb-3">
+          <div class="card p-3">
+              <div class="img-box">
+                  <img src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png" alt="">
+              </div>
+              <div class="number">
+                  <label class="fw-bold" for="">**** **** **** 1060</label>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                  <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small>
+                  <small><span class="fw-bold">Name:</span><span>Kumar</span></small>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 mb-lg-0 mb-3">
+          <div class="card p-3">
+              <div class="img-box">
+                  <img src="https://www.freepnglogos.com/uploads/mastercard-png/file-mastercard-logo-svg-wikimedia-commons-4.png"
+                      alt="">
+              </div>
+              <div class="number">
+                  <label class="fw-bold">**** **** **** 1060</label>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                  <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small>
+                  <small><span class="fw-bold">Name:</span><span>Kumar</span></small>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4 mb-lg-0 mb-3">
+          <div class="card p-3">
+              <div class="img-box">
+                  <img src="https://www.freepnglogos.com/uploads/discover-png-logo/credit-cards-discover-png-logo-4.png"
+                      alt="">
+              </div>
+              <div class="number">
+                  <label class="fw-bold">**** **** **** 1060</label>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                  <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small>
+                  <small><span class="fw-bold">Name:</span><span>Kumar</span></small>
+              </div>
+          </div>
+      </div>
+      <div class="col-12 mt-4">
+          <div class="card p-3">
+              <p class="mb-0 fw-bold h4">Payment Methods</p>
+          </div>
+      </div>
+      <div class="col-12">
+          <div class="card p-3">
+              <div class="card-body border p-0">
+                  <p>
+                      <a class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-between"
+                          data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                          aria-controls="collapseExample">
+                          <span class="fw-bold">PayPal</span>
+                          <span class="fab fa-cc-paypal">
+                          </span>
+                      </a>
+                  </p>
+                  <div class="collapse p-3 pt-0" id="collapseExample">
+                      <div class="row">
+                          <div class="col-8">
+                              <p class="h4 mb-0">Summary</p>
+                              <p class="mb-0"><span class="fw-bold">Product:</span><span class="c-green">: Name of
+                                      product</span></p>
+                              <p class="mb-0"><span class="fw-bold">Price:</span><span
+                                      class="c-green">:$452.90</span></p>
+                              <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                                  nihil neque
+                                  quisquam aut
+                                  repellendus, dicta vero? Animi dicta cupiditate, facilis provident quibusdam ab
+                                  quis,
+                                  iste harum ipsum hic, nemo qui!</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-body border p-0">
+                  <p>
+                      <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between"
+                          data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                          aria-controls="collapseExample">
+                          <span class="fw-bold">Credit Card</span>
+                          <span class="">
+                              <span class="fab fa-cc-amex"></span>
+                              <span class="fab fa-cc-mastercard"></span>
+                              <span class="fab fa-cc-discover"></span>
+                          </span>
+                      </a>
+                  </p>
+                  <div class="collapse show p-3 pt-0" id="collapseExample">
+                      <div class="row">
+                          <div class="col-lg-5 mb-lg-0 mb-3">
+                              <p class="h4 mb-0">Summary</p>
+                              <p class="mb-0"><span class="fw-bold">Product:</span><span class="c-green">: Name of
+                                      product</span>
+                              </p>
+                              <p class="mb-0">
+                                  <span class="fw-bold">Price:</span>
+                                  <span class="c-green">:$452.90</span>
+                              </p>
+                              <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                                  nihil neque
+                                  quisquam aut
+                                  repellendus, dicta vero? Animi dicta cupiditate, facilis provident quibusdam ab
+                                  quis,
+                                  iste harum ipsum hic, nemo qui!</p>
+                          </div>
+                          <div class="col-lg-7">
+                              <form action="" class="form">
+                                  <div class="row">
+                                      <div class="col-12">
+                                          <div class="form__div">
+                                              <input type="text" class="form-control" placeholder=" ">
+                                              <label for="" class="form__label">Card Number</label>
+                                          </div>
+                                      </div>
 
+                                      <div class="col-6">
+                                          <div class="form__div">
+                                              <input type="text" class="form-control" placeholder=" ">
+                                              <label for="" class="form__label">MM / yy</label>
+                                          </div>
+                                      </div>
+
+                                      <div class="col-6">
+                                          <div class="form__div">
+                                              <input type="password" class="form-control" placeholder=" ">
+                                              <label for="" class="form__label">cvv code</label>
+                                          </div>
+                                      </div>
+                                      <div class="col-12">
+                                          <div class="form__div">
+                                              <input type="text" class="form-control" placeholder=" ">
+                                              <label for="" class="form__label">name on the card</label>
+                                          </div>
+                                      </div>
+                                      <div class="col-12">
+                                          <div class="btn btn-primary w-100">Sumbit</div>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-12">
+        <br>
+        <label class="form-label" for="form6Example7">Feedback</label>
+        <textarea class="form-control" id="form6Example7" rows="4" placeholder="Only good feedbacks,negative feedbacks will be ignored"></textarea>
+      
+      </div>
+      <div class="col-12">
+          <div class="btn btn-primary payment">
+              Make Payment
+          </div>
+      </div>
+      
+  </div>
+</div>
+
+</div>
+
+</div>
 
 
 

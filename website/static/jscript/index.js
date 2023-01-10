@@ -42,11 +42,32 @@ hidden_hor.forEach((el)=>{observer_hor.observe(el)});
 
 // appointment form jscript
 
-$(".dashboard a").click(function(){
-  document.querySelector(".appoint-form").classList.toggle("appoint-form-none");
+$(".dashboard #appointment").click(function(){
+  if(!$("#payment-input").hasClass("appoint-form-none")){
+    $("#payment-input").toggleClass("appoint-form-none");
+    
+  }
+  else{
+    $("#request-alert").toggleClass("appoint-form-none");
+  }
+  $("#request-form").toggleClass("appoint-form-none");
+  
+
 })
 
+$(".dashboard #payment-dash").click(function(){
+  if(!$("#request-form").hasClass("appoint-form-none")){
+    $("#request-form").toggleClass("appoint-form-none");
+    
+  }
+  else{
+    $("#request-alert").toggleClass("appoint-form-none");
+  }
+  
+  $("#payment-input").toggleClass("appoint-form-none");
+  
 
+})
 
 // msgp-popup
 
@@ -54,3 +75,9 @@ $("#loginmsg button").click(function(){
   document.querySelector("#loginmsg")
 }
 )
+
+
+
+// form-slot
+
+
