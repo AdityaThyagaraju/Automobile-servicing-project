@@ -81,3 +81,21 @@ $("#loginmsg button").click(function(){
 // form-slot
 
 
+
+
+
+
+
+// $(".dashboard #gen-bill").click(function(){
+//   if(!$("#request-form").hasClass("appoint-form-none")){
+//     $("#request-form").toggleClass("appoint-form-none");
+    
+//   }
+//   else{
+//     $("#request-alert").toggleClass("appoint-form-none");
+//   }
+  
+//   $("#payment-input").toggleClass("appoint-form-none");
+  
+
+// })

@@ -1,0 +1,128 @@
+{%extends "base.html"%}
+{%block title%}α Motor Works{%endblock%}
+{%block navbarlist%}
+<ul class="navbar-nav ms-auto me-3">
+  <li class="nav-item active">
+    <a class="nav-link" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#services">Services</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#pricing">Pricing</a>
+  </li>
+  <li class="nav-item" style="padding: 0%;">
+    <a class="nav-link" href="#" data-bs-target="#signupModal" data-bs-toggle="modal" style="display:inline-block; padding-right: 1px;">Signup</a>
+    <span class="nav-link" style="display: inline-block; padding: 0;">|</span>
+    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="display:inline-block; padding-left: 1px;">Login</a>
+  </li>
+</ul>
+{%endblock%}
+{%block content%}
+<!-- login message -->
+{%with messages = get_flashed_messages()%}
+{%for message in messages%}
+{%if message%}
+<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsg" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
+  <div class=" modal-dialog modal-sm d-flex ">
+    <div class=" modal-content custom-modal1" >
+      <button type="button" class="btn ms-auto" data-bs-dismiss="alert" >&times;</button>
+      <h3 style="display: inline;">{{message[0]}} </h3>
+      <hr>
+      <p>{{message[1]}}</p>
+    </div>
+  </div>
+</div>
+{%endif%}
+{%endfor%}
+{%set messages=none%}
+{%endwith%}
+
+
+
+
+
+<div class="row">
+<div class="dashboard col-sm-3" >
+  <div style="position: fixed;">
+    <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
+    <ul style=" display: inline-block; list-style: none;">
+        <li>
+            <a id="appointment" href="#">Customer requests</a>
+        </li>
+        <li>
+            <a id="gen-bill" href="#">Generate Bill</a>
+        </li>
+        <li>
+            <a id="payment-dash" href="#">Payment</a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+<div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
+<div class="" style="margin-top: 150px; margin-bottom: 100px;">
+    <form class="appoint-form appoint-form-none" id="request-form">
+        <h3 class="d-flex justify-content-center pb-4">List of items</h3>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <!-- Text input -->
+        <div class="form-floating mb-4">
+          <input type="text" id="form6Example3" class="form-control" name="custId" placeholder="name@example.com"/>
+          <label class="form-label" for="form6Example3">Customer Id</label>
+        </div>
+      
+        <!-- Text input -->
+        <!-- <div class="form-floating mb-4">
+          <input type="checkbox" id="form6Example4" class="form-control" name="req_service" placeholder="name@example.com"/>
+          <label class="form-label" for="form6Example4">Service Type</label>
+          <input type="check">
+        </div> -->
+        <div class="form-control">
+          <h6>Select Service</h6>
+          <div class="row">
+            <div class="col-sm-3">
+              <input type="checkbox" id="check1" name="service" value="a">a
+              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price1" placeholder="Rs">
+              <br>
+              <input type="checkbox" id="check1" name="service" value="Air Filter">b
+              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price2" placeholder="Rs">
+              <br>
+              
+            </div>
+            <div class="col-sm-3">
+                <input type="checkbox" id="check1" name="service" value="Battery">c
+                <input style="width: 150px;" class="form-control" type="text" id="value1" name="price3" placeholder="Rs">
+              <br>
+              <input type="checkbox" id="check1" name="service" value="Spark Plug">d
+              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price4" placeholder="Rs">
+            </div>
+            
+            <div class="col-sm-3">
+              <input type="checkbox" id="check1" name="service" value="Fuel Filter">e
+              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price5" placeholder="Rs">
+              <br>
+              <input type="checkbox" id="check1" name="service" value="Body Wash">f
+              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price6" placeholder="Rs">
+              <br>
+              
+            </div>
+            <div class="col-sm-3">
+                <input type="checkbox" id="check1" name="service" value="Wheel Alignment">g
+                <input style="width: 150px;" class="form-control" type="text" id="value1" name="price7" placeholder="Rs">
+              <br>
+              <input type="checkbox" id="check1" name="service" value="Wheel Balance">h
+              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price8" placeholder="Rs">
+            </div>
+              
+           
+          </div>
+    
+        </div>
+</div>
+</div>
+</div>
+{%endblock%}
