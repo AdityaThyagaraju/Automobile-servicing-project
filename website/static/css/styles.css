@@ -30,7 +30,7 @@ body{
   align-items: center;
   background: rgba(23, 23, 23, 0.7);
   color:#d1e3f3fa;
-  font-family: cursive;
+  font-family: sans-serif;
   position: absolute;
   right : 360px;
   width: 800px;
@@ -236,10 +236,23 @@ rect{
 /* servicing */
 
 /* carousel */
+
+#carouselExampleIndicators .content-div{
+  color: white;
+  height: 683px;
+  text-align: center;
+  padding: 5%;
+  padding-top: 25%;
+}
+
+
+
 .cor-img{
   filter: brightness(40%);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 1%;
+  position:absolute;
+  z-index: -1;
 }
 
 
@@ -336,9 +349,11 @@ rect{
   color: #ddd2e7 ;
 }
 .view-detail-div{
-  background-color: #2803277d;
-  color: white;
+  background-color: #2e072d7d;
+  color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  border-radius: 1% !important;
+  width: 300px;
 
 }
 
@@ -647,7 +662,7 @@ input {
     margin: 30px auto;
 } */
 
-.container .card {
+#payment-input .card {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: #fff;
