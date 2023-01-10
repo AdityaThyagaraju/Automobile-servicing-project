@@ -242,7 +242,7 @@ rect{
 /* carousel */
 
 #carouselExampleIndicators .content-div{
-  color: white;
+  color: rgb(255, 255, 255);
   height: 683px;
   text-align: left;
   padding: 25% 17% 0% 12%;

@@ -109,16 +109,22 @@ $("#loginmsg button").click(function(){
 
 
 
-// $(".dashboard #gen-bill").click(function(){
-//   if(!$("#request-form").hasClass("appoint-form-none")){
-//     $("#request-form").toggleClass("appoint-form-none");
-    
-//   }
-//   else{
-//     $("#request-alert").toggleClass("appoint-form-none");
-//   }
+$(".dashboard #gen-bill").click(function(){
+  if(!$("#cust-req").hasClass("appoint-form-none")){
+    $("#cust-req").toggleClass("appoint-form-none")
+  }
   
-//   $("#payment-input").toggleClass("appoint-form-none");
+  $("#bill-form").toggleClass("appoint-form-none");
   
 
-// })
+})
+
+$(".dashboard #from-cust-req").click(function(){
+  if(!$("#bill-form").hasClass("appoint-form-none")){
+    $("#bill-form").toggleClass("appoint-form-none")
+  }
+  
+  $("#cust-req").toggleClass("appoint-form-none");
+  
+
+})
