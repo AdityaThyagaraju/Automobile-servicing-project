@@ -43,6 +43,7 @@ def signup():
     if request.method == 'POST':
         chk = request.form.get('cbtn')
         name = request.form.get('name')
+        phone = request.form.get('phone')
         usn = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
@@ -56,13 +57,13 @@ def signup():
             flash(['Sign up','Password doesnt match with re-entered password'],category='error')
         else :
             if chk == '0':
-                new_user = User(name=name,role='C',email=email,password=generate_password_hash(password,method='sha256'),username=usn)
+                new_user = User(name=name,phone=phone,role='C',email=email,password=generate_password_hash(password,method='sha256'),username=usn)
                 db.session.add(new_user)
                 db.session.commit()
                 flash(['Sign up','Account created'],category='success')
                 return redirect(url_for('views.home'))
             elif chk == '1' :
-                new_user = User(name=name,role='S',email=email,password=generate_password_hash(password,method='sha256'),username=usn)
+                new_user = User(name=name,phone=phone,role='S',email=email,password=generate_password_hash(password,method='sha256'),username=usn)
                 db.session.add(new_user)
                 db.session.commit()
                 flash(['Sign up','Account created'],category='success')

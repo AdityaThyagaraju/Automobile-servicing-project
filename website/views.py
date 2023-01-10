@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template,request,flash,jsonify,redirect,url_for
 from flask_login import current_user,login_required
-from .models import Note,User,Customerveh,ReqSer
+from .models import Feedback,User,Customerveh,ReqSer
 from . import db
 import json
 
@@ -25,23 +25,38 @@ def customer():
         if Customerveh.query.all()<=100:
             brand = request.form.get('brand')
             model = request.form.get('model')
-            chasis_no = request.form.get('ch_no')
-            req_service = request.form.getlist('req_service')
-            selected_slot = request.form.get('sel_slot')
-            cust_id = current_user.id
-            new_veh = Customerveh(brand=brand,model=model,ch_mo=chasis_no,sel_slot=selected_slot,cust_id=cust_id)
-            db.session.add(new_veh)
-            for ser in req_service:
-                new_ser = ReqSer(veh_id = new_veh.id,request = ser)
-                db.session.add(new_ser)
-            flash('Request applied, please wait for confirmation from our side')
+            ch_no = request.form.get('chasis_no')
+            service = request.form.getlist('service')
+            seldate = request.form.get('seldate')
+            new_veh = Customerveh(brand=brand,model=model,chasis_no=ch_no,selected_date=seldate,cust_id=current_user.id)
+            veh = Customerveh.query.filter_by(chasis_no=ch_no).first()
+            if veh:
+                flash(['Error','Vehicle with this chasis no already exists'])
+                return redirect(url_for('views.customer'))
+            else:
+                db.session.add(new_veh)
+                db.session.commit()
+                queryveh = Customerveh.query.filter_by(chasis_no=ch_no).first()
+                for ser in service:
+                    new_ser = ReqSer(veh_id=queryveh,req=ser)
+                    db.session.add(new_ser)
+                    db.session.commit()
+                    flash('Request applied, please wait for confirmation from our side')
         else:
             flash('Pending request for vehicles has overflooded, please try later',category='success')
+    check_acc = Customerveh.query.filter_by(cust_id=current_user.id)
+    for v in check_acc:
+        if v.accepted_by_staff == 1:
+            flash(['accept','Vehicle with chasis number: '+str(v.chasis_no)+'is accepted please wait for bill generation'])
     return render_template('customer.html',user = current_user)
 
-# @views.route('/customerveh',methods=['POST'])
-# def addveh():
-#     brand = request.form.get('brand')
-#     model = request.form.get('model')
-#     ch_no = request.form.get('chasis_no')
+@views.route('/customerfeedback',methods=['POST'])
+def cust_feedback():
+        feedback = request.form.get('feedback')
+        new_feedback = Feedback(data=feedback,user_id=current_user.id)
+        db.session.add(new_feedback)
+        db.session.commit()
+        return redirect(url_for('views.customer'))
+
+
     
