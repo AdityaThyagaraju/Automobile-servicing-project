@@ -240,10 +240,27 @@ rect{
 /* servicing */
 
 /* carousel */
+
+#carouselExampleIndicators .content-div{
+  color: white;
+  height: 683px;
+  text-align: left;
+  padding: 25% 17% 0% 12%;
+  padding-top: 25%;
+}
+
+.content-div .heading{
+  font-size: 50px;
+  line-height: 1;
+}
+
+
 .cor-img{
   filter: brightness(40%);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 1%;
+  position:absolute;
+  z-index: -1;
 }
 
 
@@ -340,9 +357,11 @@ rect{
   color: #ddd2e7 ;
 }
 .view-detail-div{
-  background-color: #2803277d;
-  color: white;
+  background-color: #2e072d7d;
+  color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  border-radius: 1% !important;
+  width: 300px;
 
 }
 
@@ -652,7 +671,7 @@ input {
     margin: 30px auto;
 } */
 
-.container .card {
+#payment-input .card {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: #fff;

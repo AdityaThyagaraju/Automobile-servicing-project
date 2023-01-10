@@ -17,7 +17,7 @@ def home():
     #         db.session.add(new_note)    
     #         db.session.commit()
     #         flash('Note added',category='success')
-     return render_template("index.html")
+     return render_template("staff.html")
 
 @views.route('/customer',methods=['GET','POST'])
 def customer():
