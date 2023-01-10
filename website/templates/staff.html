@@ -48,7 +48,7 @@
     <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
     <ul style=" display: inline-block; list-style: none;">
         <li>
-            <a id="appointment" href="#">Customer requests</a>
+            <a id="from-cust-req" href="#">Customer requests</a>
         </li>
         <li>
             <a id="gen-bill" href="#">Generate Bill</a>
@@ -65,14 +65,64 @@
 
 
 <div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
+
+<div style="margin-top: 150px; margin-bottom: 100px;">
+  <form class="appoint-form appoint-form-none" id="cust-req">
+    <h3 class="d-flex justify-content-center pb-4">Request from Customer</h3>
+    <div class="form-floating mb-4">
+    <p>customer no</p>
+    </div>
+    <div class="form-floating mb-4">
+    <p>vehical no</p>
+    </div>
+    <div class="form-floating mb-4">
+    <p>chasis no</p>
+    </div>
+    <div class="form-floating mb-4">
+    <p>brand</p>
+    </div>
+    <div class="form-floating mb-4">
+    <p>model</p>
+    </div>
+    <div class="form-floating mb-4">
+    <p>date</p>
+    </div>
+    <div class="form-floating mb-4">
+    <p>Additional servive</p>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+      <input type="radio" id="accept" name="acc-rej" value="1">
+      <label for="accept">Accept</label>
+    </div>
+    <div class="col-sm-4">
+      <input type="radio" id="reject" name="acc-rej" value="0">
+      <label for="accept">Reject</label>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+
+</div>
+
+
 <div class="" style="margin-top: 150px; margin-bottom: 100px;">
-    <form class="appoint-form appoint-form-none" id="request-form">
+    <form class="appoint-form appoint-form-none" id="bill-form">
         <h3 class="d-flex justify-content-center pb-4">List of items</h3>
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <!-- Text input -->
         <div class="form-floating mb-4">
-          <input type="text" id="form6Example3" class="form-control" name="custId" placeholder="name@example.com"/>
-          <label class="form-label" for="form6Example3">Customer Id</label>
+          <input type="text" id="form6Example1" class="form-control" name="custId" placeholder="name@example.com"/>
+          <label class="form-label" for="form6Example1">Customer Id</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input type="text" id="form6Example2" class="form-control" name="chasisNo" placeholder="name@example.com"/>
+          <label class="form-label" for="form6Example2">Chasis Number</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input type="text" id="form6Example3" class="form-control" name="orderId" placeholder="name@example.com"/>
+          <label class="form-label" for="form6Example3">Order number</label>
         </div>
       
         <!-- Text input -->
@@ -122,6 +172,9 @@
           </div>
     
         </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 </div>
 </div>

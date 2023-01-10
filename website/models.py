@@ -19,7 +19,6 @@ class Customerveh(db.Model):
     model = db.Column(db.String(50))
     chasis_no = db.Column(db.Integer,primary_key=True)
     selected_date = db.Column(db.DateTime)
-    selected_slot = db.Column(db.Integer)
     cust_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     accept_by_staff = db.Column(db.Integer,default=0)
     requests = db.relationship('ReqSer')
