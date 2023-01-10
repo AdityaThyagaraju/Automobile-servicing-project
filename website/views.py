@@ -58,5 +58,11 @@ def cust_feedback():
         db.session.commit()
         return redirect(url_for('views.customer'))
 
+                                            #   staff-route
+# @views.route('/Staff')
+# def staff():
+#     if request.method == 'POST':
+
+
 
     

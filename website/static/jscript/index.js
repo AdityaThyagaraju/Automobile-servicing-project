@@ -43,31 +43,54 @@ hidden_hor.forEach((el)=>{observer_hor.observe(el)});
 // appointment form jscript
 
 $(".dashboard #appointment").click(function(){
-  if(!$("#payment-input").hasClass("appoint-form-none")){
-    $("#payment-input").toggleClass("appoint-form-none");
-    
+  if(!$(".payment-input").hasClass("appoint-form-none")){
+    $(".payment-input").toggleClass("appoint-form-none");
+  }
+  else if(!$(".bill-js").hasClass("appoint-form-none")){
+    $(".bill-js").toggleClass("appoint-form-none")
   }
   else{
     $("#request-alert").toggleClass("appoint-form-none");
   }
-  $("#request-form").toggleClass("appoint-form-none");
+  $(".request-form").toggleClass("appoint-form-none");
+  
+
+})
+
+$(".dashboard #bill").click(function(){
+  if(!$(".request-form").hasClass("appoint-form-none")){
+    $(".request-form").toggleClass("appoint-form-none");
+  }
+  else if(!$(".payment-input").hasClass("appoint-form-none")){
+    $(".payment-input").toggleClass("appoint-form-none")
+  }
+  else{
+    $("#request-alert").toggleClass("appoint-form-none");
+  }
+
+  $(".bill-js").toggleClass("appoint-form-none");
   
 
 })
 
 $(".dashboard #payment-dash").click(function(){
-  if(!$("#request-form").hasClass("appoint-form-none")){
-    $("#request-form").toggleClass("appoint-form-none");
-    
+  if(!$(".request-form").hasClass("appoint-form-none")){
+    $(".request-form").toggleClass("appoint-form-none");
+  }
+  else if(!$(".bill-js").hasClass("appoint-form-none")){
+    $(".bill-js").toggleClass("appoint-form-none")
   }
   else{
     $("#request-alert").toggleClass("appoint-form-none");
   }
-  
-  $("#payment-input").toggleClass("appoint-form-none");
+  alert("hello");
+  $(".payment-input").toggleClass("appoint-form-none");
   
 
 })
+
+
+
 
 // msgp-popup
 

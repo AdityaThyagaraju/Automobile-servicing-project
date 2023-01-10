@@ -89,7 +89,7 @@
             <a id="appointment" href="#">Add Vehicle</a>
         </li>
         <li>
-            <a href="#">View Bill</a>
+            <a id = "bill" href="#">View Bill</a>
         </li>
         <li>
             <a id="payment-dash" href="#">Payment</a>
@@ -113,27 +113,23 @@
   <!-- alert-div -->
 
 
-<div class="alert appoint-form appoint-form-none" id="request-alert" >
+<div class="alert appoint-form" id="request-alert" >
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quos vero, repudiandae aspernatur deserunt sed aperiam asperiores maiores illo, nostrum commodi voluptatum dolore perferendis placeat autem minima! Non, labore quis.</p>
   <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
 </div>
 
 
-<div class="nothing-card appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-bill" >
-  <h3>You have not added any vehicles yet so no bills </h3>
-</div>
 
 
 
-<div class="nothing-card appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-payment" >
-  <h3>No payment due</h3>  
-</div>
+
+
 
 
 
 <!-- appointment-form -->
 <div class="" style="margin-top: 150px; margin-bottom: 100px;">
-<form class="appoint-form appoint-form-none" id="request-form">
+<form class="request-form appoint-form appoint-form-none" id="request-form" action="/customer" method="post">
     <h3 class="d-flex justify-content-center pb-4">Book A Slot</h3>
     <!-- 2 column grid layout with text inputs for the first and last names -->
     <div class="row mb-4">
@@ -231,7 +227,7 @@
 
 {%if user.bills %}
 
-<div class="container appoint-form">
+<div class="bill-js container appoint-form appoint-form-none">
   <div class="row">
       <div class="col-xs-12">
       <div class="invoice-title">
@@ -329,12 +325,15 @@
     </div>
   </div>
 </div>
-{%elif%}
-
+{%else%}
+<div class="bill-js appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-bill" >
+  <h3>You have not added any vehicles yet, so no bills </h3>
+</div>
 {%endif%}
 
 <!-- Payment -->
-<div class="container appoint-form appoint-form-none" id="payment-input" style="margin-top: 150px; margin-bottom: 100px;">
+{%if user.bills%}
+<form class="payment-input container appoint-form appoint-form-none" id="payment-input" style="margin-top: 150px; margin-bottom: 100px;" action="/customer" method="post">
   <div class="row">
       <div class="col-lg-4 mb-lg-0 mb-3">
           <div class="card p-3">
@@ -493,13 +492,18 @@
       
       </div>
       <div class="col-12">
-          <div class="btn btn-primary payment">
+          <button class="btn btn-primary payment" type="submit"  style="background-image:linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">
               Make Payment
-          </div>
+          </button>
       </div>
       
   </div>
+</form>
+{%else%}
+<div class="payment-input appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-payment" >
+  <h3>No payment due</h3>  
 </div>
+{%endif%}
 
 </div>
 
