@@ -69,3 +69,5 @@ def signup():
                 flash(['Sign up','Account created'],category='success')
                 return redirect(url_for('views.home'))
     return render_template('index.html')
+
+    

@@ -18,7 +18,7 @@ def home():
     #         db.session.add(new_note)    
     #         db.session.commit()
     #         flash('Note added',category='success')
-     return render_template("staff.html")
+     return render_template("index.html")
 
 @views.route('/customer',methods=['GET','POST'])
 def customer():
@@ -79,13 +79,26 @@ def cust_payment():
                                             #   staff-route
 @views.route('/Staff',methods=['POST','GET'])
 def staff():
-    # if request.method == 'POST':
-        
-    # reqlist = []
-    # requests = ReqSer.query.all()
-    # for req in requests:
-    #     reqlist.append(req)
-    # return render_template('staff.html',reqlist)
+    if request.method == 'POST':
+        dec = request.form.get('acc-rej')
+        req_id = dec[1:]
+        req = ReqSer.query.get(int(req_id))
+        if dec[0] == 1:
+            req.accepted_by_staff = 1
+            flag_modified(req,"accepted_by_staff")
+            db.session.merge(req)
+            db.session.commit()
+            flash(['Accepted','request with id : '+req_id+' is accepted'])
+        elif dec[0] == 0:
+            db.session.delete(req)
+            db.session.commit()
+            flash(['Rejected','request with id : '+req_id+' is rejected'])
+    reqlist = []
+    requests = ReqSer.query.all()
+    for req in requests:
+        if req.accepted_by_staff == 0:
+            reqlist.append(req)
+    return render_template('staff.html',reqlist)
 
 
 

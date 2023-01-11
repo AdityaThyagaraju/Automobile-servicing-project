@@ -66,37 +66,39 @@
 
 <div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
 
+{%for req in reqlist%}
 <div style="margin-top: 150px; margin-bottom: 100px;">
   <form class="appoint-form appoint-form-none" id="cust-req">
     <h3 class="d-flex justify-content-center pb-4">Request from Customer</h3>
     <div class="form-floating mb-4">
+      <p>Request no.</p>
+      <p>{{req.id}}</p>
+      </div>
+    <div class="form-floating mb-4">
     <p>customer no</p>
+    <p>{{req.cust_id}}</p>
     </div>
     <div class="form-floating mb-4">
     <p>vehical no</p>
+    <p>{{req.veh_id}}</p>
     </div>
     <div class="form-floating mb-4">
-    <p>chasis no</p>
-    </div>
-    <div class="form-floating mb-4">
-    <p>brand</p>
-    </div>
-    <div class="form-floating mb-4">
-    <p>model</p>
-    </div>
-    <div class="form-floating mb-4">
-    <p>date</p>
+    <p>Requested date</p>
+    <p>{{req.selected_date}}</p>
     </div>
     <div class="form-floating mb-4">
     <p>Additional servive</p>
+    {%for ser in req.req%}
+    <p>{{ser}}</p><br>
+    {%endfor%}
     </div>
     <div class="row">
       <div class="col-sm-4">
-      <input type="radio" id="accept" name="acc-rej" value="1">
+      <input type="radio" id="accept" name="acc-rej" value="1{{req.id}}">
       <label for="accept">Accept</label>
     </div>
     <div class="col-sm-4">
-      <input type="radio" id="reject" name="acc-rej" value="0">
+      <input type="radio" id="reject" name="acc-rej" value="0{{req.id}}">
       <label for="accept">Reject</label>
     </div>
     </div>
@@ -105,6 +107,7 @@
 
 
 </div>
+{%endfor%}
 
 
 <div class="" style="margin-top: 150px; margin-bottom: 100px;">
@@ -168,10 +171,6 @@
               <input style="width: 150px;" class="form-control" type="text" id="value1" name="price8" placeholder="Rs">
             </div>
               
-           
-          </div>
-            <button type="submit">submit</button>
-        </div>
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
