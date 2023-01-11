@@ -2,19 +2,55 @@
 {%block title%}α Motor Works{%endblock%}
 {%block navbarlist%}
 <ul class="navbar-nav ms-auto me-3">
-  <li class="nav-item active">
-    <a class="nav-link" href="#">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#services">Services</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#pricing">Pricing</a>
+  <li class="dropdown custom-accicon-div active d-flex justify-content-center align-items-center ">
+    <a href="#" class="custom-accicon fa-solid fa-user" data-bs-toggle="dropdown" aria-expanded="false"></a>
+    <div class="dropdown-menu">
+        <div class="row g-0 custom-cust-card ">
+            <div class="col-sm-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <i class="custom-accicon-form fa-solid fa-user"></i>
+              <h5>Marie Horwitz</h5>
+              <p>Staff</p>
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-sm-8">
+              <div class="card-body p-4">
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p >info@example.com</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Phone</h6>
+                    <p >123 456 789</p>
+                  </div>
+                </div>
+                <h6>Projects</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Recent</h6>
+                    <p >Lorem ipsum</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Most Viewed</h6>
+                    <p>Dolor sit amet</p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-start">
+                  <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                  <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                  <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
   </li>
   <li class="nav-item" style="padding: 0%;">
-    <a class="nav-link" href="#" data-bs-target="#signupModal" data-bs-toggle="modal" style="display:inline-block; padding-right: 1px;">Signup</a>
-    <span class="nav-link" style="display: inline-block; padding: 0;">|</span>
-    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="display:inline-block; padding-left: 1px;">Login</a>
+    <a class="nav-link" href="/Logout" style="display:inline-block; padding-left: 1px;">Logout</a>
   </li>
 </ul>
 {%endblock%}
@@ -43,22 +79,7 @@
 
 
 <div class="row">
-<div class="dashboard col-sm-3" >
-  <div style="position: fixed;">
-    <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
-    <ul style=" display: inline-block; list-style: none;">
-        <li>
-            <a id="from-cust-req" href="#">Customer requests</a>
-        </li>
-        <li>
-            <a id="gen-bill" href="#">Generate Bill</a>
-        </li>
-        <li>
-            <a id="payment-dash" href="#">Payment</a>
-        </li>
-    </ul>
-  </div>
-</div>
+
 
 
 
@@ -74,15 +95,6 @@
     </div>
     <div class="form-floating mb-4">
     <p>vehical no</p>
-    </div>
-    <div class="form-floating mb-4">
-    <p>chasis no</p>
-    </div>
-    <div class="form-floating mb-4">
-    <p>brand</p>
-    </div>
-    <div class="form-floating mb-4">
-    <p>model</p>
     </div>
     <div class="form-floating mb-4">
     <p>date</p>
@@ -176,6 +188,22 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+</div>
+<div class="dashboard col-sm-3" >
+  <div style="position: fixed;">
+    <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
+    <ul style=" display: inline-block; list-style: none;">
+        <li>
+            <a id="from-cust-req" href="#">Customer requests</a>
+        </li>
+        <li>
+            <a id="gen-bill" href="#">Generate Bill</a>
+        </li>
+        <li>
+            <a id="payment-dash" href="#">Payment</a>
+        </li>
+    </ul>
+  </div>
 </div>
 </div>
 {%endblock%}
