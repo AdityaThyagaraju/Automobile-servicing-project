@@ -89,6 +89,23 @@ $(".dashboard #payment-dash").click(function(){
 
 })
 
+$(".dashboard #staff-signup-req").click(function(){
+  // if(!$(".request-form").hasClass("appoint-form-none")){
+  //   $(".request-form").toggleClass("appoint-form-none");
+  // }
+  // else if(!$(".bill-js").hasClass("appoint-form-none")){
+  //   $(".bill-js").toggleClass("appoint-form-none")
+  // }
+  // else{
+  //   $("#request-alert").toggleClass("appoint-form-none");
+  // }
+
+  $("#st-req").toggleClass("appoint-form-none");
+  
+
+})
+
+
 
 
 
@@ -99,7 +116,20 @@ $("#loginmsg button").click(function(){
 }
 )
 
+$("#loginmsgcust button").click(function(){
+  document.querySelector("#loginmsgcust")
+}
+)
 
+$("#loginmsgstaff button").click(function(){
+  document.querySelector("#loginmsgstaff")
+}
+)
+
+$("#loginmsgadmin button").click(function(){
+  document.querySelector("#loginmsgadmin")
+}
+)
 
 // form-slot
 
