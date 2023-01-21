@@ -19,7 +19,7 @@ def home():
     #         db.session.add(new_note)    
     #         db.session.commit()
     #         flash('Note added',category='success')
-     return render_template("admin.html")
+     return render_template("index.html")
 
 @views.route('/customer',methods=['GET','POST'])
 def customer():
@@ -104,7 +104,7 @@ def staff():
     for cust_request in requests:
         if cust_request.accept_by_staff == 0:
             reqlist.append(cust_request)
-    return render_template('staff.html',reqlist=reqlist)
+    return render_template('staff.html',reqlist=reqlist,user=current_user)
 
 
 
