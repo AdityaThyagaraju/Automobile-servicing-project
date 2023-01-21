@@ -31,6 +31,8 @@ def login():
                     login_user(user,remember=True)
                     flash(['Login','Logged in successfully'])
                     return redirect(url_for('views.admin'))
+                else :
+                    flash(['Login','Incorrect password'])
         else:
             flash(['Login','User does not exist, please register first'])
     return redirect(url_for('views.home'))
