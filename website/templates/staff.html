@@ -89,7 +89,7 @@
 
 {%for req in reqlist%}
 <div style="margin-top: 150px; margin-bottom: 100px;">
-  <form class="appoint-form appoint-form-none" id="cust-req">
+  <form class="appoint-form appoint-form-none " id="cust-req" action="/Staff" method="post">
     <h3 class="d-flex justify-content-center pb-4">Request from Customer</h3>
     <div class="form-floating mb-4">
       <p>Request no.</p>
@@ -109,7 +109,7 @@
     </div>
     <div class="form-floating mb-4">
     <p>Additional servive</p>
-    {%for ser in req.req%}
+    {%for ser in req.req.split()%}
     <p>{{ser}}</p><br>
     {%endfor%}
     </div>
@@ -132,7 +132,7 @@
 
 
 <div class="" style="margin-top: 150px; margin-bottom: 100px;">
-    <form class="appoint-form appoint-form-none" id="bill-form">
+    <form class="appoint-form appoint-form-none " id="bill-form">
         <h3 class="d-flex justify-content-center pb-4">List of items</h3>
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <!-- Text input -->

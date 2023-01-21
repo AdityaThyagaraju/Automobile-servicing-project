@@ -83,7 +83,7 @@ $(".dashboard #payment-dash").click(function(){
   else{
     $("#request-alert").toggleClass("appoint-form-none");
   }
-  alert("hello");
+
   $(".payment-input").toggleClass("appoint-form-none");
   
 

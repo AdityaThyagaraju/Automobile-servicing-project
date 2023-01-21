@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template,request,flash,jsonify,redirect,url_for
+import datetime
 from sqlalchemy.orm.attributes import flag_modified
 from flask_login import current_user,login_required
 from .models import Feedback,User,Customerveh,ReqSer,Items,Staffbill
@@ -23,7 +24,7 @@ def home():
 @views.route('/customer',methods=['GET','POST'])
 def customer():
     if request.method == 'POST':
-        if ReqSer.query.all()<=100:
+        if len(ReqSer.query.all())<=100:
             brand = request.form.get('brand')
             model = request.form.get('model')
             ch_no = request.form.get('chasis_no')
@@ -32,33 +33,39 @@ def customer():
             new_veh = Customerveh(brand=brand,model=model,chasis_no=ch_no,cust_id=current_user.id)
             user = User.query.get(int(current_user.id))
             vehicles = user.vehicles
-            if ch_no in vehicles.chasis_no:
-                queryveh = Customerveh.query.filter_by(chasis_no=ch_no).first()
-                veh_ser = []
-                for ser in service:
-                    veh_ser.append(ser)
-                new_ser = ReqSer(veh_id=queryveh.id,req=veh_ser,selected_date=seldate)
-                db.session.add(new_ser)
-                db.session.commit()
-                flash('Request applied, please wait for confirmation from our side')
-                return redirect(url_for('views.customer'))
-            else:
-                db.session.add(new_veh)
-                db.session.commit()
-                queryveh = Customerveh.query.filter_by(chasis_no=ch_no).first()
-                veh_ser = []
-                for ser in service:
-                    veh_ser.append(ser)
-                new_ser = ReqSer(veh_id=queryveh.id,req=veh_ser,selected_date=seldate)
-                db.session.add(new_ser)
-                db.session.commit()
-                flash('Request applied, please wait for confirmation from our side')
+            if vehicles:
+                for vehicle in vehicles:
+                    if int(ch_no) == vehicle.chasis_no:
+                        queryveh = Customerveh.query.filter_by(chasis_no=ch_no).first()
+                        veh_ser = ''
+                        for ser in service:
+                            veh_ser=veh_ser+' '+ser
+                        new_ser = ReqSer(cust_id=current_user.id,veh_id=queryveh.id,req=veh_ser,selected_date=datetime.datetime.strptime(seldate,'%Y-%m-%d'))
+                        db.session.add(new_ser)
+                        db.session.commit()
+                        flash(['Request','Request applied, please wait for confirmation from our side'])
+                        return redirect(url_for('views.customer'))
+                
+            db.session.add(new_veh)
+            db.session.commit()
+            queryveh = Customerveh.query.filter_by(chasis_no=ch_no).first()
+            veh_ser = ''
+            for ser in service:
+                veh_ser = veh_ser+' '+ser
+            new_ser = ReqSer(cust_id=current_user.id,veh_id=queryveh.id,req=veh_ser,selected_date=datetime.datetime.strptime(seldate,'%Y-%m-%d'))
+            db.session.add(new_ser)
+            db.session.commit()
+            flash(['Request','Request applied, please wait for confirmation from our side'])
         else:
-            flash('Pending request for vehicles has overflooded, please try later',category='success')
-    check_acc = Customerveh.query.filter_by(cust_id=current_user.id)
-    for v in check_acc.requests:
-        if v.accepted_by_staff == 1:
-            flash(['accept','Vehicle with chasis number: '+str(v.chasis_no)+'is accepted please wait for bill generation'])
+            flash(['Request','Pending request for vehicles has overflooded, please try later'],category='success')
+    check_acc = Customerveh.query.filter_by(cust_id=current_user.id).first()
+    if check_acc:
+        if check_acc.requests:
+            for v in check_acc.requests:
+                if v.accept_by_staff == 1 and v.flashed == 1:
+                    ReqSer.query.filter_by(int(v.id)).update(dict(flashed=1))
+                    db.session.commit()
+                    flash(['accept','Vehicle with chasis number: '+str(check_acc.chasis_no)+'is accepted please wait for bill generation'])
     return render_template('customer.html',user = current_user)
 
 @views.route('/customer-payment',methods=['POST'])
@@ -83,22 +90,21 @@ def staff():
         dec = request.form.get('acc-rej')
         req_id = dec[1:]
         req = ReqSer.query.get(int(req_id))
-        if dec[0] == 1:
-            req.accepted_by_staff = 1
-            flag_modified(req,"accepted_by_staff")
-            db.session.merge(req)
+        if dec[0] == '1':
+            
+            ReqSer.query.filter_by(id = int(req_id)).update(dict(accept_by_staff=1))
             db.session.commit()
             flash(['Accepted','request with id : '+req_id+' is accepted'])
-        elif dec[0] == 0:
+        elif dec[0] == '0':
             db.session.delete(req)
             db.session.commit()
             flash(['Rejected','request with id : '+req_id+' is rejected'])
     reqlist = []
     requests = ReqSer.query.all()
-    for req in requests:
-        if req.accepted_by_staff == 0:
-            reqlist.append(req)
-    return render_template('staff.html',reqlist)
+    for cust_request in requests:
+        if cust_request.accept_by_staff == 0:
+            reqlist.append(cust_request)
+    return render_template('staff.html',reqlist=reqlist)
 
 
 
@@ -128,6 +134,9 @@ def staff_bill():
             flash(['Bill','Successfully generated bill'])
     return render_template('staff.html')
         
+# @views.route('/admin')
+# def admin():
+#     if request.method == 'POST':
 
 
 

@@ -31,9 +31,11 @@ class Feedback(db.Model):
 
 class ReqSer(db.Model):
     id = db.Column(db.Integer,primary_key=True)
+    cust_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     veh_id = db.Column(db.Integer,db.ForeignKey('customerveh.id'))
     selected_date = db.Column(db.DateTime)
     accept_by_staff = db.Column(db.Integer,default=0)
+    flashed = db.Column(db.Integer,default=0)
     req = db.Column(db.String(50))
 
 class Staffbill(db.Model):
