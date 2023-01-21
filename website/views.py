@@ -75,7 +75,7 @@ def cust_payment():
         new_feedback = Feedback(data=feedback,user_id=current_user.id)
         db.session.add(new_feedback)
         db.session.commit()
-        bill = Staffbill.query.get(bill_id)
+        bill = Staffbill.query.get(int(bill_id))
         bill.payed = 1
         flag_modified(bill,"payed")
         db.session.merge(bill)
@@ -118,30 +118,31 @@ def staff_bill():
         price = []
         for i in range(1,9):
             p = request.form.get('price'+str(i))
-            if p != None:
+            if len(p) != 0:
                 price.append(p)
         vehicles = Customerveh.query.filter_by(cust_id=cust_id)
-        if chasis_no in vehicles.chasis_no:
-            veh = Customerveh.query.filter_by(chasis_no=chasis_no)
-            bill = Staffbill(cust_id=cust_id,veh_id=veh.id,order_id=order_id)
-            db.session.add(bill)
-            db.commit()
-            for i in range(len(price)):
-                querbill = Staffbill.query.filter_by(order_id).first()
-                new_item = Items(name=service[i],price=price[i],bill_id=querbill.id)
-                db.session.add(new_item)
+        for vehicle in vehicles:
+            if int(chasis_no) == vehicle.chasis_no:
+                veh = Customerveh.query.filter_by(chasis_no=chasis_no).first()
+                bill = Staffbill(cust_id=cust_id,veh_id=veh.id,order_id=order_id)
+                db.session.add(bill)
                 db.session.commit()
-            flash(['Bill','Successfully generated bill'])
-    return render_template('staff.html')
+                for i in range(len(price)):
+                    querbill = Staffbill.query.filter_by(order_id=order_id).first()
+                    new_item = Items(name=service[i],price=price[i],bill_id=querbill.id)
+                    db.session.add(new_item)
+                    db.session.commit()
+                flash(['Bill','Successfully generated bill'])
+    return redirect(url_for('views.staff'))
         
-@views.route('/Admin')
+@views.route('/Admin',methods=['GET','POST'])
 def admin():
     if request.method == 'POST':
         dec = request.form.get('acc-rej')
         stid = dec[1:]
         staff = Staffauth.query.get(int(stid))
         if dec[0] == '1':
-            new_user = User(name=staff.name,phone=staff.phone,email=staff.email,username=staff.username,password=staff.password)
+            new_user = User(name=staff.name,phone=staff.phone,email=staff.email,username=staff.username,password=staff.password,role='S')
             db.session.add(new_user)
             flash(['Admin','Staff with id :'+stid+' has been authorized'])
         elif dec[0] == '0':

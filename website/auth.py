@@ -42,7 +42,7 @@ def login():
 def logout():
     logout_user()
     flash(['Login','Logged out succesfully'],category='success')    
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('views.home'))
 
 
 @auth.route('/Signup',methods=['GET','POST'])

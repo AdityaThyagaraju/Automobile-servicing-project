@@ -227,6 +227,7 @@
 
 {%if user.bills %}
 {%for bill in user.bills%}
+{%if bill.payed==0%}
 <div class="bill-js container appoint-form appoint-form-none">
   <div class="row">
       <div class="col-xs-12">
@@ -325,6 +326,7 @@
     </div>
   </div>
 </div>
+{%endif%}
 {%endfor%}
 {%else%}
 <div class="bill-js appoint-form appoint-form-none justify-content-center align-items-center" id="nothing-bill" >
@@ -333,7 +335,13 @@
 {%endif%}
 
 <!-- Payment -->
-{%if user.bills%}
+{%set flag=0%}
+{%for bill in user.bills%}
+{%if bill.payed==0%}
+{%set flag=1%}
+{%endif%}
+{%endfor%}
+{%if flag==1%}
 <form class="payment-input container appoint-form appoint-form-none" id="payment-input" style="margin-top: 150px; margin-bottom: 100px;" action="/customer-payment" method="post">
   <div class="row">
       <div class="col-lg-4 mb-lg-0 mb-3">
@@ -403,7 +411,7 @@
                               <p class="h4 mb-0">Enter Details</p>
                               <br>
                               <p class="mb-0"><span class="fw-bold">Bill Number:</span>
-                              <input class="form-control" type="text"  name="bill-no-cust" id="bill-id-input">
+                              <input class="form-control" type="text"  name="billId" id="bill-id-input" >
                               </p>
                               <br>
                               <p class="mb-0"><span class="fw-bold">Price:</span>
@@ -434,7 +442,7 @@
                               <p class="h4 mb-0">Enter Details</p>
                               <br>
                               <p class="mb-0"><span class="fw-bold">Bill Number:</span>
-                                <input class="form-control" type="text" name="bill-no-cust" id="bill-id-input" >
+                                <input class="form-control" type="text" name="billId" id="bill-id-input" >
                               </p>
                               <br>
                               <p class="mb-0">
