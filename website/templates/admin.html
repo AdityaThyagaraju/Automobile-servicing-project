@@ -9,8 +9,8 @@
             <div class="col-sm-4 gradient-custom text-center text-white"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
               <i class="custom-accicon-form fa-solid fa-user"></i>
-              <h5>Marie Horwitz</h5>
-              <p>Staff</p>
+              <h5>Administrator</h5>
+              <p>Admin</p>
               <i class="far fa-edit mb-5"></i>
             </div>
             <div class="col-sm-8">
@@ -19,26 +19,26 @@
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
-                    <h6>Email</h6>
-                    <p >info@example.com</p>
+                    <h6>Username:</h6>
+                    <p >admin</p>
                   </div>
-                  <div class="col-6 mb-3">
+                  <!-- <div class="col-6 mb-3">
                     <h6>Phone</h6>
                     <p >123 456 789</p>
-                  </div>
+                  </div> -->
                 </div>
-                <h6>Skills</h6>
+                <!-- <h6>Projects</h6>
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
-                    <h6>Good Communication</h6><br>
-                    <p >Well trained</p>
+                    <h6>Recent</h6>
+                    <p >Lorem ipsum</p>
                   </div>
                   <div class="col-6 mb-3">
-                    <h6>High work efficiency</h6><br>
-                    <p>Highly Rated</p>
+                    <h6>Most Viewed</h6>
+                    <p>Dolor sit amet</p>
                   </div>
-                </div>
+                </div> -->
                 <div class="d-flex justify-content-start">
                   <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
                   <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
@@ -59,7 +59,7 @@
 {%with messages = get_flashed_messages()%}
 {%for message in messages%}
 {%if message%}
-<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsgstaff" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
+<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsgadmin" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
   <div class=" modal-dialog modal-sm d-flex ">
     <div class=" modal-content custom-modal1" >
       <button type="button" class="btn ms-auto" data-bs-dismiss="alert" >&times;</button>
@@ -85,13 +85,13 @@
       <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
       <ul style=" display: inline-block; list-style: none;">
           <li>
-              <a id="from-cust-req" href="#">Customer requests</a>
+              <a id="staff-signup-req" href="#">Staff Signup requests</a>
           </li>
           <li>
-              <a id="gen-bill" href="#">Generate Bill</a>
+              <a id="staff-all" href="#">Manage Staff</a>
           </li>
           <li>
-              <a id="payment-dash" href="#">Payment</a>
+              <a id="cust-all" href="#">Manage Customer</a>
           </li>
       </ul>
     </div>
@@ -102,31 +102,25 @@
 
 <div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
 
-{%for req in reqlist%}
+{%for req in stlist%}
 <div style="margin-top: 150px; margin-bottom: 100px;">
-  <form class="appoint-form appoint-form-none " id="cust-req" action="/Staff" method="post">
-    <h3 class="d-flex justify-content-center pb-4">Request from Customer</h3>
+  <form class="appoint-form appoint-form-none " id="st-req" action="/Admin" method="post">
+    <h3 class="d-flex justify-content-center pb-4">Signup Request For Staff</h3>
     <div class="form-floating mb-4">
-      <p>Request no.</p>
-      <p>{{req.id}}</p>
+      <p>Name</p>
+      <p>{{req.name}}</p>
       </div>
     <div class="form-floating mb-4">
-    <p>customer no</p>
-    <p>{{req.cust_id}}</p>
+    <p>Phone Number</p>
+    <p>{{req.phone}}</p>
     </div>
     <div class="form-floating mb-4">
-    <p>vehical no</p>
-    <p>{{req.veh_id}}</p>
+    <p>Email</p>
+    <p>{{req.email}}</p>
     </div>
     <div class="form-floating mb-4">
-    <p>Requested date</p>
-    <p>{{req.selected_date}}</p>
-    </div>
-    <div class="form-floating mb-4">
-    <p>Additional servive</p>
-    {%for ser in req.req.split()%}
-    <p>{{ser}}</p><br>
-    {%endfor%}
+    <p>Username</p>
+    <p>{{req.username}}</p>
     </div>
     <div class="row">
       <div class="col-sm-4">

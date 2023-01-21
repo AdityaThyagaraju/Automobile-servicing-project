@@ -48,6 +48,7 @@ body{
 
 }
 
+
 /* #bed5eafa; */
 
 /* annimation */
@@ -498,7 +499,7 @@ rect{
 
 .dropdown-menu{
   width: 500px;
-  transform: translateX(-380px);
+  transform: translateX(-400px);
   background-color: rgba(255, 255, 255,0);
   
 }
@@ -510,7 +511,7 @@ rect{
 }
 
 .fab{
-  color: #23053d;
+  color: #b7a8c4;
 }
 
 
