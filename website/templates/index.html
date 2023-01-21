@@ -1,13 +1,55 @@
+<!-- class="modal-open" style="overflow:hidden; padding-right:17px;" -->
 {%extends "base.html"%}
 {%block title%}α Motor Works{%endblock%}
+{%block navbarlist%}
+<ul class="navbar-nav ms-auto me-3">
+  <li class="nav-item active">
+    <a class="nav-link" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#services">Services</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#pricing">Pricing</a>
+  </li>
+  <li class="nav-item" style="padding: 0%;">
+    <a class="nav-link" href="#" data-bs-target="#signupModal" data-bs-toggle="modal" style="display:inline-block; padding-right: 1px;">Signup</a>
+    <span class="nav-link" style="display: inline-block; padding: 0;">|</span>
+    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="display:inline-block; padding-left: 1px;">Login</a>
+  </li>
+</ul>
+{%endblock%}
 {%block content%}
+
+
 <!-- <div class="hidden">fhjg</div> -->
+
 <div class="bg-img-dv">
   <img src="static/images/bg-img1.jpg" alt="" class="bg-img">
 </div>
 <div class="body-card mx-auto hidden">
-  <p class="">Shaping the future of premium mobility</p>
+  <p class="" >Shaping the future of premium mobility</p>
 </div>
+
+<!-- login message -->
+{%with messages = get_flashed_messages()%}
+{%for message in messages%}
+{%if message%}
+<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsg" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
+  <div class=" modal-dialog modal-sm d-flex ">
+    <div class=" modal-content custom-modal1" >
+      <button type="button" class="btn ms-auto" data-bs-dismiss="alert" >&times;</button>
+      <h3 style="display: inline;">{{message[0]}} </h3>
+      <hr>
+      <p>{{message[1]}}</p>
+    </div>
+  </div>
+</div>
+{%endif%}
+{%endfor%}
+{%set messages=none%}
+{%endwith%}
+
 
 
 
@@ -23,21 +65,33 @@
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
 <main class="ser-bg" id="services">
-  <div id="carouselExampleIndicators" class="carousel slide custom-carousel" data-bs-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide custom-carousel" data-bs-ride="carousel" >
     <ol class="carousel-indicators">
       <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
       <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
       <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner hidden-horizontal">
+    <div class="carousel-inner hidden-brightness">
       <div class="carousel-item active ">
         <img class="d-block w-100 cor-img" src="static/images/car1.jpg" alt="First slide">
+        <div class="content-div">
+          <p class="heading">Luxury Car Care Delivered</p>
+          <p>Alpha Motor works is your dealer alternative to your car service and repair needs. Our experienced technicians provide reliable and consistent service for all your auto repair needs.</p>
+        </div>
       </div>
       <div class="carousel-item ">
         <img class="d-block w-100 cor-img" src="static/images/car2.jpg" alt="Second slide">
+        <div class="content-div">
+          <p class="heading">Professional Auto Repair & Maintenance</p>
+          <p>We are dedicated to providing high-quality auto repair and maintenance to keep you and your car safe on the road. We give your car the care it deserves</p>
+        </div>
       </div>
       <div class="carousel-item ">
         <img class="d-block w-100 cor-img" src="static/images/car3.jpg" alt="Third slide">
+        <div class="content-div">
+          <p class="heading">Performance Without Compromise</p>
+          <p>We provide a wide range of automotive maintenance services. Our skilled technicians use genuine OEM parts at standard workshop to take care of any mechanical issue with ease and confidence</p>
+        </div>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -65,13 +119,13 @@
         <h2 class="fw-normal">Car Inspection</h2>
         <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
         <p>
-          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample1" aria-expanded="false" aria-controls="collapseWidthExample">
             view details &raquo;
           </button>
         </p>
         <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body view-detail-div" style="width: 300px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample1">
+            <div class="card card-body view-detail-div">
               This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
             </div>
           </div>
@@ -84,13 +138,13 @@
         <h2 class="fw-normal">Tyres & Wheel Cares</h2>
         <p>Another exciting bit of representative placeholder content. This time, we've moved on to the the the the the second column.</p>
         <p>
-          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample2" aria-expanded="false" aria-controls="collapseWidthExample">
             view details &raquo;
           </button>
         </p>
         <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body view-detail-div" style="width: 300px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample2">
+            <div class="card card-body view-detail-div" >
               This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
             </div>
           </div>
@@ -103,13 +157,13 @@
         <h2 class="fw-normal">Car Spa & Cleaning</h2>
         <p>And lastly this, the third column of representative placeholder content. the third column of representative placeholder content.</p>
         <p>
-          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample3" aria-expanded="false" aria-controls="collapseWidthExample">
             view details &raquo;
           </button>
         </p>
         <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body view-detail-div" style="width: 300px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample3">
+            <div class="card card-body view-detail-div" >
               This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
             </div>
           </div>
@@ -124,13 +178,13 @@
         <h2 class="fw-normal">Denting & Painting</h2>
         <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
         <p> 
-          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample4" aria-expanded="false" aria-controls="collapseWidthExample">
             view details &raquo;
           </button>
         </p>
         <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body view-detail-div" style="width: 300px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample4">
+            <div class="card card-body view-detail-div" >
               This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
             </div>
           </div>
@@ -143,13 +197,13 @@
         <h2 class="fw-normal">Insurance Claims</h2>
         <p>Another exciting bit of representative placeholder content. This time, we've moved on to the the the the the second column.</p>
         <p>
-          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample5" aria-expanded="false" aria-controls="collapseWidthExample">
             view details &raquo;
           </button>
         </p>
         <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body view-detail-div" style="width: 300px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample5">
+            <div class="card card-body view-detail-div" >
               This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
             </div>
           </div>
@@ -162,13 +216,13 @@
         <h2 class="fw-normal">Detailed Servicing</h2>
         <p>And lastly this, the third column of representative placeholder content. the third column of representative placeholder content.</p>
         <p>
-          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+          <button class="btn btn-outline-dark ser-btns" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample6" aria-expanded="false" aria-controls="collapseWidthExample">
             view details &raquo;
           </button>
         </p>
         <div style="min-height: 120px;">
-          <div class="collapse collapse-horizontal" id="collapseWidthExample">
-            <div class="card card-body view-detail-div" style="width: 300px;">
+          <div class="collapse collapse-horizontal" id="collapseWidthExample6">
+            <div class="card card-body view-detail-div" >
               This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
             </div>
           </div>
@@ -179,13 +233,13 @@
     <!-- START THE FEATURETTES -->
 
     <hr class="featurette-divider">
-
+    <h1>Service In Three Easy Steps</h1>
     <div class="row featurette">
       <div class="col-md-6">
-        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+        <h2 class="featurette-heading fw-normal lh-1">Select Your Car.</h2>
+        <p class="lead">Choose from our portfolio of cars. </p>
       </div>
-      <div class="col-md-6 ">
+      <div class="col-md-6  hidden-brightness">
         <img class="ser-step-img" src="static/images/ser-car1.jpg" alt="">
       </div>
     </div>
@@ -194,10 +248,10 @@
 
     <div class="row featurette">
       <div class="col-md-6 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+        <h2 class="featurette-heading fw-normal lh-1">Free Pick-Up & Drop.</h2>
+        <p class="lead">Once booked, sit back and relax.</p>
       </div>
-      <div class="col-md-6 order-md-1">
+      <div class="col-md-6 order-md-1 hidden-brightness">
         <img class="ser-step-img" src="static/images/ser-car3.jpg" alt="">
       </div>
     </div>
@@ -206,10 +260,10 @@
 
     <div class="row featurette pb-5">
       <div class="col-md-6">
-        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+        <h2 class="featurette-heading fw-normal lh-1">Live Tracking.</h2>
+        <p class="lead">Get real-time status & updates.</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 hidden-brightness">
         <img class="ser-step-img" src="static/images/ser-car2.jpg" alt="">
       </div>
     </div>
@@ -354,14 +408,14 @@
           <h4>Login</h4>
         </div>
         <div class="d-flex flex-column text-center">
-          <form>
+          <form action="/Login" method="post">
             <div class="form-group">
-              <input type="text" class="form-control" id="email1"placeholder="Username" name="username">
+              <input type="text" class="form-control" id="email1"placeholder="Username" name="username" required>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Password" name="password">
+              <input type="password" class="form-control" id="password1" placeholder="Password" name="password" required>
             </div>
-            <a href="" class="btn btn-toolbar d-flex btn-round justify-content-center mt-5">login</a>
+            <button type="submit" class="btn btn-toolbar d-flex btn-round justify-content-center mt-5 w-100">Login</button>
           </form>
           
           <div class="text-center text-muted delimiter">or use a social network</div>
@@ -375,7 +429,6 @@
             <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
               <i class="fab fa-linkedin"></i>
             </button>
-          </di>
         </div>
       </div>
     </div>
@@ -391,7 +444,6 @@
 
 <!-- sign up -->
 
-
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -405,39 +457,48 @@
           <h4>Signup</h4>
         </div>
         <div class="d-flex flex-column text-center">
-          <form>
+          <form action="/Signup" method="post">
             
-            <input type="radio" class="btn-check" id="custbtn" name="cbtn" checked autocomplete="off">
-            <label class="btn btn-outline-secondary" for="custbtn" >Customer</label>
-            <input type="radio" class="btn-check" id="staffbtn" name="cbtn"  checked autocomplete="off">
+            <input type="radio" class="btn-check" id="custbtn" name="cbtn" checked  value="0">
+            <label class="btn btn-outline-secondary" for="custbtn" checked>Customer</label>
+            <input type="radio" class="btn-check" id="staffbtn" name="cbtn"    value="1">
             <label class="btn btn-outline-secondary"  for="staffbtn" >Staff</label><br>
            
+            <div class="form-group">
+              <input type="text" class="form-control" id="email1"placeholder="Enter name" name="name" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="email1"placeholder="Enter Phone number" name="phone" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="email1"placeholder="Enter email" name="email" required>
+            </div>
             
             <div class="form-group">
-              <input type="email" class="form-control" id="email1"placeholder="Enter email" name="email">
+              <input type="text" class="form-control" id="password1" placeholder="Enter username" name="username" required>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="email1"placeholder="Enter name" name="name">
+              <input type="password" class="form-control" id="password1" placeholder="Enter password" name="password" required>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="password1" placeholder="Enter username" name="username">
+              <input type="password" class="form-control" id="password1" placeholder="Re-enter password" name="repassword" required>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Enter password" name="password">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Re-enter password" name="repassword">
-            </div>
-            <a href="" class="btn btn-toolbar d-flex btn-round justify-content-center mt-5">Sign up</a>
+            <button type="submit" class="btn btn-toolbar d-flex btn-round justify-content-center mt-5 w-100">Sign up</button>
           </form>
           
           
       </div>
     </div>
       <div class="modal-footer d-flex justify-content-center">
+        
         <div class="signup-section">Already Registered? <a data-bs-target="#loginModal" data-bs-toggle="modal" href="" class="text-color"> Login</a>.</div>
       </div>
   </div>
 </div>
 </div>
+
+
+
+
+
 {%endblock%}
