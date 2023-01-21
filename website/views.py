@@ -2,7 +2,7 @@ from flask import Blueprint, render_template,request,flash,jsonify,redirect,url_
 import datetime
 from sqlalchemy.orm.attributes import flag_modified
 from flask_login import current_user,login_required
-from .models import Feedback,User,Customerveh,ReqSer,Items,Staffbill
+from .models import Feedback,User,Customerveh,ReqSer,Items,Staffbill,Staffauth
 from . import db
 import json
 
@@ -134,9 +134,22 @@ def staff_bill():
             flash(['Bill','Successfully generated bill'])
     return render_template('staff.html')
         
-# @views.route('/admin')
-# def admin():
-#     if request.method == 'POST':
+@views.route('/Admin')
+def admin():
+    if request.method == 'POST':
+        dec = request.form.get('acc-rej')
+        stid = dec[1:]
+        staff = Staffauth.query.get(int(stid))
+        if dec[0] == '1':
+            new_user = User(name=staff.name,phone=staff.phone,email=staff.email,username=staff.username,password=staff.password)
+            db.session.add(new_user)
+            flash(['Admin','Staff with id :'+stid+' has been authorized'])
+        elif dec[0] == '0':
+            flash(['Admin','Staff with id :'+stid+' has been rejected'])
+        db.session.delete(staff)
+        db.session.commit()
+    stlist = Staffauth.query.all()
+    return render_template('admin.html',stlist=list(stlist))
 
 
 

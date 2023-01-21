@@ -52,3 +52,11 @@ class Items(db.Model):
     name = db.Column(db.String(50))
     price = db.Column(db.Integer)
     bill_id = db.Column(db.Integer,db.ForeignKey('staffbill.id'))
+
+class Staffauth(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(20))
+    phone = db.Column(db.Integer,unique=True)
+    email = db.Column(db.String(50),unique=True)
+    password = db.Column(db.String(20))
+    username = db.Column(db.String(20),unique=True)
