@@ -44,7 +44,7 @@ def logout():
     return redirect(url_for('views.home'))
 
 
-@auth.route('/Signup',methods=['GET','POST'])
+@auth.route('/Signup',methods=['POST','GET'])
 def signup():
     if request.method == 'POST':
         chk = request.form.get('cbtn')
