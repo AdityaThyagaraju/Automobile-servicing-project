@@ -136,11 +136,11 @@ $(".dashboard #cust-all").click(function(){
   if(!$("#staff-detail").hasClass("appoint-form-none")){
     $("#staff-detail").toggleClass("appoint-form-none")
   }
-  else if(!$("#st-req").hasClass("appoint-form-none")){
-    $("#st-req").toggleClass("appoint-form-none")
+  else if(!$("#request-alert").hasClass("appoint-form-none")){
+    $("#request-alert").toggleClass("appoint-form-none");
   }
   else{
-    $("#request-alert").toggleClass("appoint-form-none");
+    $("#st-req").toggleClass("appoint-form-none")
   }
   $("#cust-detail").toggleClass("appoint-form-none");
   
@@ -154,11 +154,11 @@ $(".dashboard #staff-all").click(function(){
   if(!$("#cust-detail").hasClass("appoint-form-none")){
     $("#cust-detail").toggleClass("appoint-form-none")
   }
-  else if(!$("#st-req").hasClass("appoint-form-none")){
-    $("#st-req").toggleClass("appoint-form-none")
+  else if(!$("#request-alert").hasClass("appoint-form-none")){
+    $("#request-alert").toggleClass("appoint-form-none");
   }
   else{
-    $("#request-alert").toggleClass("appoint-form-none");
+    $("#st-req").toggleClass("appoint-form-none")
   }
 
   $("#staff-detail").toggleClass("appoint-form-none");
@@ -171,11 +171,11 @@ $(".dashboard #staff-signup-req").click(function(){
   if(!$("#staff-detail").hasClass("appoint-form-none")){
     $("#staff-detail").toggleClass("appoint-form-none");
   }
-  else if(!$("cust-detail").hasClass("appoint-form-none")){
-    $("cust-detail").toggleClass("appoint-form-none")
+  else if(!$("#request-alert").hasClass("appoint-form-none")){
+    $("#request-alert").toggleClass("appoint-form-none");
   }
   else{
-    $("#request-alert").toggleClass("appoint-form-none");
+    $("#cust-detail").toggleClass("appoint-form-none")
   }
 
   $("#st-req").toggleClass("appoint-form-none");
