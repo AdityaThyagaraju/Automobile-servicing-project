@@ -55,6 +55,19 @@
 </ul>
 {%endblock%}
 {%block content%}
+
+<!-- alert-div -->
+<div class="alert appoint-form hidden-small" id="request-alert" style="text-align:center">
+  <h2>Welcome to Alpha Motor works</h2> 
+  <br>
+  <p> Take a step to schedule an appointment for your car service</p>
+  <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
+</div>
+
+
+
+
+
 <!-- login message -->
 {%with messages = get_flashed_messages()%}
 {%for message in messages%}
@@ -154,12 +167,16 @@
         </tr>
       </thead>
       <tbody>
+        {%for user in uslist%}
+        {%if user.role=='C'%}
         <tr>
-          <td>abc</td>
-          <td>abc</td>
-          <td>abc</td>
+          <td>{{user.name}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.email}}</td>
           <td><button type="submit" class="btn btn-outline-dark">Delete</button></td>
         </tr>
+        {%endif%}
+        {%endfor%}
       </tbody>
       
     </table>
@@ -180,13 +197,16 @@
         </tr>
       </thead>
       <tbody>
-        
+        {%for user in uslist%}
+        {%if user.role=='S'%}
         <tr>
-          <td>def</td>
-          <td>def</td>
-          <td>def</td>
+          <td>{{user.name}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.email}}</td>
           <td><button type="submit" class="btn btn-outline-dark">Delete</button></td>
         </tr>
+        {%endif%}
+        {%endfor%}
         
       </tbody>
       

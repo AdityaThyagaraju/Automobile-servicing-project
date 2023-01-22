@@ -76,6 +76,13 @@
 
 
 
+<!-- alert-div -->
+<div class="alert appoint-form hidden-small" id="request-alert" style="text-align:center">
+  <h2>Welcome to Alpha Motor works</h2> 
+  <br>
+  <p> Take a step to schedule an appointment for your car service</p>
+  <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
+</div>
 
 
 <div class="row">
@@ -107,28 +114,29 @@
   <form class="appoint-form appoint-form-none " id="cust-req" action="/Staff" method="post">
     <h3 class="d-flex justify-content-center pb-4">Request from Customer</h3>
     <div class="form-floating mb-4">
-      <p>Request no.</p>
+      <h5>Request no.</h5>
       <p>{{req.id}}</p>
       </div>
     <div class="form-floating mb-4">
-    <p>customer no</p>
+    <h5>customer no</h5>
     <p>{{req.cust_id}}</p>
     </div>
     <div class="form-floating mb-4">
-    <p>vehical no</p>
+    <h5>vehical no</h5>
     <p>{{req.veh_id}}</p>
     </div>
     <div class="form-floating mb-4">
-    <p>Requested date</p>
-    <p>{{req.selected_date}}</p>
+    <h5>Requested date</h5>
+    <p>{{req.selected_date}}</p><br>
     </div>
     <div class="form-floating mb-4">
-    <p>Additional servive</p>
-    {%for ser in req.req.split()%}
+    <h5>Additional servive</h5>
+    {%for ser in req.req.split(',')%}
     <p>{{ser}}</p><br>
     {%endfor%}
     </div>
     <div class="row">
+      <h5>Decision</h5>
       <div class="col-sm-4">
       <input type="radio" id="accept" name="acc-rej" value="1{{req.id}}">
       <label for="accept">Accept</label>
@@ -138,7 +146,7 @@
       <label for="accept">Reject</label>
     </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" style="background-image:linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); width: 100%;">Submit</button>
   </form>
 
 

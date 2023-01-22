@@ -10,15 +10,7 @@ views = Blueprint('views',__name__)
 
 @views.route('/',methods=['GET','POST'])
 def home():
-    #  if request.method == 'POST':
-    #     note = request.form.get('Note')
-    #     if len(note)<1:
-    #         flash('Cannot add empty note!',category='error')
-    #     else:
-    #         new_note = Note(data=note,user_id = current_user.id)
-    #         db.session.add(new_note)    
-    #         db.session.commit()
-    #         flash('Note added',category='success')
+    
      return render_template("index.html")
 
 @views.route('/customer',methods=['GET','POST'])
@@ -39,7 +31,7 @@ def customer():
                         queryveh = Customerveh.query.filter_by(chasis_no=ch_no).first()
                         veh_ser = ''
                         for ser in service:
-                            veh_ser=veh_ser+' '+ser
+                            veh_ser=veh_ser+','+ser
                         new_ser = ReqSer(cust_id=current_user.id,veh_id=queryveh.id,req=veh_ser,selected_date=datetime.datetime.strptime(seldate,'%Y-%m-%d'))
                         db.session.add(new_ser)
                         db.session.commit()
@@ -135,7 +127,7 @@ def staff_bill():
             flash(['Bill','Successfully generated bill'])
     return render_template('staff.html')
         
-@views.route('/Admin')
+@views.route('/Admin',methods=['POST','GET'])
 def admin():
     if request.method == 'POST':
         dec = request.form.get('acc-rej')
@@ -150,7 +142,8 @@ def admin():
         db.session.delete(staff)
         db.session.commit()
     stlist = Staffauth.query.all()
-    return render_template('admin.html',stlist=list(stlist))
+    uslist=User.query.all()
+    return render_template('admin.html',stlist=list(stlist),uslist=list(uslist))
 
 
 
