@@ -10,15 +10,6 @@ views = Blueprint('views',__name__)
 
 @views.route('/',methods=['GET','POST'])
 def home():
-    #  if request.method == 'POST':
-    #     note = request.form.get('Note')
-    #     if len(note)<1:
-    #         flash('Cannot add empty note!',category='error')
-    #     else:
-    #         new_note = Note(data=note,user_id = current_user.id)
-    #         db.session.add(new_note)    
-    #         db.session.commit()
-    #         flash('Note added',category='success')
      return render_template("index.html")
 
 @views.route('/customer',methods=['GET','POST'])
@@ -135,7 +126,7 @@ def staff_bill():
             flash(['Bill','Successfully generated bill'])
     return render_template('staff.html')
         
-@views.route('/Admin')
+@views.route('/Admin',methods=['GET','POST'])
 def admin():
     if request.method == 'POST':
         dec = request.form.get('acc-rej')
