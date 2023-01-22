@@ -333,7 +333,13 @@
 {%endif%}
 
 <!-- Payment -->
-{%if user.bills%}
+{%set flag = 0 %}
+{%for bill in user.bills%}
+{%if bill.payed == 1%}
+{%set flag =1%}
+{%endif%}
+{%endfor%}
+{%if flag == 1%}
 <form class="payment-input container appoint-form appoint-form-none" id="payment-input" style="margin-top: 150px; margin-bottom: 100px;" action="/customer-payment" method="post">
   <div class="row">
       <div class="col-lg-4 mb-lg-0 mb-3">
