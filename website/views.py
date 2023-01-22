@@ -76,6 +76,7 @@ def cust_payment():
         db.session.add(new_feedback)
         db.session.commit()
         bill = Staffbill.query.get(int(bill_id))
+        bill = Staffbill.query.get(int(bill_id))
         bill.payed = 1
         flag_modified(bill,"payed")
         db.session.merge(bill)
@@ -104,7 +105,7 @@ def staff():
     for cust_request in requests:
         if cust_request.accept_by_staff == 0:
             reqlist.append(cust_request)
-    return render_template('staff.html',reqlist=reqlist)
+    return render_template('staff.html',reqlist=reqlist,user=current_user)
 
 
 
@@ -117,33 +118,31 @@ def staff_bill():
         service = request.form.getlist('service')
         price = []
         for i in range(1,9):
-            p = request.form.get(int('price'+str(i)))
+            p = request.form.get('price'+str(i))
             if p != None:
                 price.append(p)
         vehicles = Customerveh.query.filter_by(cust_id=cust_id)
-#merge conflict accept dk's
-        for vehicle in vehicles:
-             if chasis_no == vehicle.chasis_no:
-                veh = Customerveh.query.filter_by(chasis_no=chasis_no).first()
-                bill = Staffbill(cust_id=cust_id,veh_id=veh.id,order_id=order_id)
-                db.session.add(bill)
-                db.commit()
-                for i in range(len(price)):
-                    querbill = Staffbill.query.filter_by(order_id).first()
-                    new_item = Items(name=service[i],price=price[i],bill_id=querbill.id)
-                    db.session.add(new_item)
-                    db.session.commit()
-                flash(['Bill','Successfully generated bill'])
+        if chasis_no in vehicles.chasis_no:
+            veh = Customerveh.query.filter_by(chasis_no=chasis_no)
+            bill = Staffbill(cust_id=cust_id,veh_id=veh.id,order_id=order_id)
+            db.session.add(bill)
+            db.commit()
+            for i in range(len(price)):
+                querbill = Staffbill.query.filter_by(order_id).first()
+                new_item = Items(name=service[i],price=price[i],bill_id=querbill.id)
+                db.session.add(new_item)
+                db.session.commit()
+            flash(['Bill','Successfully generated bill'])
     return render_template('staff.html')
         
-@views.route('/Admin',methods = ['GET','POST'])
+@views.route('/Admin')
 def admin():
     if request.method == 'POST':
         dec = request.form.get('acc-rej')
         stid = dec[1:]
         staff = Staffauth.query.get(int(stid))
         if dec[0] == '1':
-            new_user = User(name=staff.name,phone=staff.phone,email=staff.email,username=staff.username,password=staff.password)
+            new_user = User(name=staff.name,phone=staff.phone,email=staff.email,username=staff.username,password=staff.password,role='S')
             db.session.add(new_user)
             flash(['Admin','Staff with id :'+stid+' has been authorized'])
         elif dec[0] == '0':

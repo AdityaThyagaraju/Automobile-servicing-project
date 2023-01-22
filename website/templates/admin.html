@@ -20,7 +20,7 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Username:</h6>
-                    <p >admin</p>
+                    <p >Admin@alpha</p>
                   </div>
                   <!-- <div class="col-6 mb-3">
                     <h6>Phone</h6>
@@ -140,72 +140,61 @@
 {%endfor%}
 
 
+
+
 <div class="" style="margin-top: 150px; margin-bottom: 100px;">
-    <form class="appoint-form appoint-form-none " id="bill-form">
-        <h3 class="d-flex justify-content-center pb-4">List of items</h3>
-        <!-- 2 column grid layout with text inputs for the first and last names -->
-        <!-- Text input -->
-        <div class="form-floating mb-4">
-          <input type="text" id="form6Example1" class="form-control" name="custId" placeholder="name@example.com"/>
-          <label class="form-label" for="form6Example1">Customer Id</label>
-        </div>
-        <div class="form-floating mb-4">
-          <input type="text" id="form6Example2" class="form-control" name="chasisNo" placeholder="name@example.com"/>
-          <label class="form-label" for="form6Example2">Chasis Number</label>
-        </div>
-        <div class="form-floating mb-4">
-          <input type="text" id="form6Example3" class="form-control" name="orderId" placeholder="name@example.com"/>
-          <label class="form-label" for="form6Example3">Order number</label>
-        </div>
+  <form class="appoint-form appoint-form-none" id="cust-detail" >
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th>
+          <th>Phone no</th>
+          <th>Email</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>abc</td>
+          <td>abc</td>
+          <td>abc</td>
+          <td><button type="submit" class="btn btn-outline-dark">Delete</button></td>
+        </tr>
+      </tbody>
       
-        <!-- Text input -->
-        <!-- <div class="form-floating mb-4">
-          <input type="checkbox" id="form6Example4" class="form-control" name="req_service" placeholder="name@example.com"/>
-          <label class="form-label" for="form6Example4">Service Type</label>
-          <input type="check">
-        </div> -->
-        <div class="form-control">
-          <h6>Select Service</h6>
-          <div class="row">
-            <div class="col-sm-3">
-              <input type="checkbox" id="check1" name="service" value="a">a
-              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price1" placeholder="Rs">
-              <br>
-              <input type="checkbox" id="check1" name="service" value="Air Filter">b
-              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price2" placeholder="Rs">
-              <br>
-              
-            </div>
-            <div class="col-sm-3">
-                <input type="checkbox" id="check1" name="service" value="Battery">c
-                <input style="width: 150px;" class="form-control" type="text" id="value1" name="price3" placeholder="Rs">
-              <br>
-              <input type="checkbox" id="check1" name="service" value="Spark Plug">d
-              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price4" placeholder="Rs">
-            </div>
-            
-            <div class="col-sm-3">
-              <input type="checkbox" id="check1" name="service" value="Fuel Filter">e
-              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price5" placeholder="Rs">
-              <br>
-              <input type="checkbox" id="check1" name="service" value="Body Wash">f
-              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price6" placeholder="Rs">
-              <br>
-              
-            </div>
-            <div class="col-sm-3">
-                <input type="checkbox" id="check1" name="service" value="Wheel Alignment">g
-                <input style="width: 150px;" class="form-control" type="text" id="value1" name="price7" placeholder="Rs">
-              <br>
-              <input type="checkbox" id="check1" name="service" value="Wheel Balance">h
-              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price8" placeholder="Rs">
-            </div>
-              
-        <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </table>
+  </form>
+
 </div>
+<br>
+
+<div class="staff-details" style="margin-top: 150px; margin-bottom: 100px;">
+  <form class="appoint-form appoint-form-none" id="staff-detail">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th>
+          <th>Phone no</th>
+          <th>Email</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>def</td>
+          <td>def</td>
+          <td>def</td>
+          <td><button type="submit" class="btn btn-outline-dark">Delete</button></td>
+        </tr>
+        
+      </tbody>
+      
+    </table>
+  </form>
+
 </div>
 
+</div>
 </div>
 {%endblock%}
