@@ -51,10 +51,6 @@ $(".dashboard #appointment").click(function(){
   else if(!$(".bill-js").hasClass("appoint-form-none")){
     $(".bill-js").toggleClass("appoint-form-none")
   }
-  // else if(!$("#request-alert").hasClass("appoint-form-none"))
-  // {
-  //   $("#request-alert").toggleClass("appoint-form-none")
-  // }
   else{
     $("#request-alert").toggleClass("appoint-form-none");
   }
@@ -108,7 +104,9 @@ $(".dashboard #gen-bill").click(function(){
   if(!$("#cust-req").hasClass("appoint-form-none")){
     $("#cust-req").toggleClass("appoint-form-none")
   }
-  
+  else{
+    $("#request-alert").toggleClass("appoint-form-none");
+  }
   $("#bill-form").toggleClass("appoint-form-none");
   
 
@@ -121,7 +119,9 @@ $(".dashboard #from-cust-req").click(function(){
   if(!$("#bill-form").hasClass("appoint-form-none")){
     $("#bill-form").toggleClass("appoint-form-none")
   }
-  
+  else{
+    $("#request-alert").toggleClass("appoint-form-none");
+  }
   $("#cust-req").toggleClass("appoint-form-none");
   
 
@@ -139,6 +139,9 @@ $(".dashboard #cust-all").click(function(){
   else if(!$("#st-req").hasClass("appoint-form-none")){
     $("#st-req").toggleClass("appoint-form-none")
   }
+  else{
+    $("#request-alert").toggleClass("appoint-form-none");
+  }
   $("#cust-detail").toggleClass("appoint-form-none");
   
 
@@ -154,7 +157,9 @@ $(".dashboard #staff-all").click(function(){
   else if(!$("#st-req").hasClass("appoint-form-none")){
     $("#st-req").toggleClass("appoint-form-none")
   }
-  
+  else{
+    $("#request-alert").toggleClass("appoint-form-none");
+  }
 
   $("#staff-detail").toggleClass("appoint-form-none");
   
@@ -169,7 +174,9 @@ $(".dashboard #staff-signup-req").click(function(){
   else if(!$("cust-detail").hasClass("appoint-form-none")){
     $("cust-detail").toggleClass("appoint-form-none")
   }
-  
+  else{
+    $("#request-alert").toggleClass("appoint-form-none");
+  }
 
   $("#st-req").toggleClass("appoint-form-none");
   
