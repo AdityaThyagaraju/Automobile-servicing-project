@@ -97,7 +97,12 @@ def staff():
     for cust_request in requests:
         if cust_request.accept_by_staff == 0:
             reqlist.append(cust_request)
-    return render_template('staff.html',reqlist=reqlist,user=current_user)
+    penlist = []
+    pending_payement = Staffbill.query.all()
+    for bill in pending_payement:
+        if bill.payed == 0:
+            penlist.append(bill)
+    return render_template('staff.html',reqlist=reqlist,user=current_user,penlist=penlist)
 
 
 
@@ -111,21 +116,27 @@ def staff_bill():
         price = []
         for i in range(1,9):
             p = request.form.get('price'+str(i))
-            if p != None:
+            if len(p)!=0:
                 price.append(p)
         vehicles = Customerveh.query.filter_by(cust_id=cust_id)
-        if chasis_no in vehicles.chasis_no:
-            veh = Customerveh.query.filter_by(chasis_no=chasis_no)
-            bill = Staffbill(cust_id=cust_id,veh_id=veh.id,order_id=order_id)
-            db.session.add(bill)
-            db.commit()
-            for i in range(len(price)):
-                querbill = Staffbill.query.filter_by(order_id).first()
-                new_item = Items(name=service[i],price=price[i],bill_id=querbill.id)
-                db.session.add(new_item)
+        for vehicle in vehicles:
+            if int(chasis_no) == vehicle.chasis_no:
+                sum = 0
+                veh = Customerveh.query.filter_by(chasis_no=int(chasis_no)).first()
+                for p in price:
+                    sum += int(p)
+                bill = Staffbill(cust_id=cust_id,veh_id=veh.id,order_id=order_id,amount=sum)
+                db.session.add(bill)
                 db.session.commit()
-            flash(['Bill','Successfully generated bill'])
-    return render_template('staff.html')
+                for i in range(len(price)):
+                    querbill = Staffbill.query.filter_by(order_id=int(order_id)).first()
+                    new_item = Items(name=service[i],price=price[i],bill_id=querbill.id)
+                    db.session.add(new_item)
+                    db.session.commit()
+                flash(['Bill','Successfully generated bill'])
+                return redirect(url_for('views.staff'))
+    flash(['Error','The customer or vehicle does not exist'])
+    return redirect(url_for('views.staff'))
         
 @views.route('/Admin',methods=['POST','GET'])
 def admin():
@@ -145,7 +156,14 @@ def admin():
     uslist=User.query.all()
     return render_template('admin.html',stlist=list(stlist),uslist=list(uslist))
 
-
+@views.route('/Admin-delete',methods=['POST'])
+def delete():
+    id = request.form.get('acc-id')
+    user = User.query.get(int(id))
+    db.session.delete(user)
+    db.session.commit()
+    flash(['Delete','Account with id:'+id+"has been permanently deleted"])
+    return redirect(url_for('views.admin'))
 
 
     

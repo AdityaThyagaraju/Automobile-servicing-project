@@ -45,6 +45,7 @@ class Staffbill(db.Model):
     order_id = db.Column(db.Integer,unique=True)
     date = db.Column(db.DateTime(),default = func.now())
     items = db.relationship('Items')
+    amount = db.Column(db.Integer)
     payed = db.Column(db.Integer,default=0)
 
 class Items(db.Model):

@@ -5,29 +5,29 @@
   <li class="dropdown custom-accicon-div active d-flex justify-content-center align-items-center ">
     <a href="#" class="custom-accicon fa-solid fa-user" data-bs-toggle="dropdown" aria-expanded="false"></a>
     <div class="dropdown-menu">
-        <div class="row g-0 custom-cust-card ">
-            <div class="col-sm-4 gradient-custom text-center text-white"
-              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-              <i class="custom-accicon-form fa-solid fa-user"></i>
-              <h5>Administrator</h5>
-              <p>Admin</p>
-              <i class="far fa-edit mb-5"></i>
-            </div>
-            <div class="col-sm-8">
-              <div class="card-body p-4">
-                <h6>Information</h6>
-                <hr class="mt-0 mb-4">
-                <div class="row pt-1">
-                  <div class="col-6 mb-3">
-                    <h6>Username:</h6>
-                    <p >Admin@alpha</p>
-                  </div>
-                  <!-- <div class="col-6 mb-3">
+      <div class="row g-0 custom-cust-card ">
+        <div class="col-sm-4 gradient-custom text-center text-white"
+          style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+          <i class="custom-accicon-form fa-solid fa-user"></i>
+          <h5>Administrator</h5>
+          <p>Admin</p>
+          <i class="far fa-edit mb-5"></i>
+        </div>
+        <div class="col-sm-8">
+          <div class="card-body p-4">
+            <h6>Information</h6>
+            <hr class="mt-0 mb-4">
+            <div class="row pt-1">
+              <div class="col-6 mb-3">
+                <h6>Username:</h6>
+                <p>Admin@alpha</p>
+              </div>
+              <!-- <div class="col-6 mb-3">
                     <h6>Phone</h6>
                     <p >123 456 789</p>
                   </div> -->
-                </div>
-                <!-- <h6>Projects</h6>
+            </div>
+            <!-- <h6>Projects</h6>
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
@@ -39,15 +39,15 @@
                     <p>Dolor sit amet</p>
                   </div>
                 </div> -->
-                <div class="d-flex justify-content-start">
-                  <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                  <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                  <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
-                </div>
-              </div>
+            <div class="d-flex justify-content-start">
+              <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+              <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+              <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
   </li>
   <li class="nav-item" style="padding: 0%;">
     <a class="nav-link" href="/Logout" style="display:inline-block; padding-left: 1px;">Logout</a>
@@ -66,10 +66,11 @@
 {%with messages = get_flashed_messages()%}
 {%for message in messages%}
 {%if message%}
-<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsgadmin" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
+<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsgadmin" style="display: block;"
+  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
   <div class=" modal-dialog modal-sm d-flex ">
-    <div class=" modal-content custom-modal1" >
-      <button type="button" class="btn ms-auto" data-bs-dismiss="alert" >&times;</button>
+    <div class=" modal-content custom-modal1">
+      <button type="button" class="btn ms-auto" data-bs-dismiss="alert">&times;</button>
       <h3 style="display: inline;">{{message[0]}} </h3>
       <hr>
       <p>{{message[1]}}</p>
@@ -87,19 +88,19 @@
 
 <div class="row">
 
-  <div class="dashboard col-sm-3" >
+  <div class="dashboard col-sm-3">
     <div style="position: fixed;">
       <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
       <ul style=" display: inline-block; list-style: none;">
-          <li>
-              <a id="staff-signup-req" href="#">Staff Signup requests</a>
-          </li>
-          <li>
-              <a id="staff-all" href="#">Manage Staff</a>
-          </li>
-          <li>
-              <a id="cust-all" href="#">Manage Customer</a>
-          </li>
+        <li>
+          <a id="staff-signup-req" href="#">Staff Signup requests</a>
+        </li>
+        <li>
+          <a id="staff-all" href="#">Manage Staff</a>
+        </li>
+        <li>
+          <a id="cust-all" href="#">Manage Customer</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -107,120 +108,140 @@
 
 
 
-<div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
+  <div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
 
 
 
-  <!-- alert-div -->
-<div class="alert appoint-form hidden-small" id="request-alert" style="text-align:center">
-  <h2>Welcome to Alpha Motor works</h2> 
-  <br>
-  <p>You will be having the privilege to authorize and manage accounts</p>
-  <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
-</div>
+    <!-- alert-div -->
+    <div class="alert appoint-form hidden-small" id="request-alert" style="text-align:center">
+      <h2>Welcome to Alpha Motor works</h2>
+      <br>
+      <p>You will be having the privilege to authorize and manage accounts</p>
+      <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
+    </div>
 
 
-
-{%for req in stlist%}
-<div style="margin-top: 150px; margin-bottom: 100px;">
-  <form class="appoint-form " id="st-req" action="/Admin" method="post">
-    <h3 class="d-flex justify-content-center pb-4">Signup Request For Staff</h3>
-    <div class="form-floating mb-4">
-      <p>Name</p>
-      <p>{{req.name}}</p>
+    <div style="margin-top: 150px; margin-bottom: 100px;" class="appoint-form appoint-form-none" id="st-req">
+      <h3 class="pb-4">Signup Request For Staff</h3>
+      <hr>
+      {%if stlist%}
+      {%for req in stlist%}
+      <div class="rounded-3 p-3 mt-1" style="background-color:rgba(33, 7, 33, 0.91)">
+        <span class="fw-bold text-light">Request number :</span>
+        <span class=" text-light">{{req.id}}</span>
+        <a class="float-end text-light" data-bs-toggle="collapse" href="#collapseExample{{req.id}}" role="button"
+          aria-expanded="false" aria-controls="collapseExample">
+          view details
+        </a>
+        <div class="card card-body rounded outline-dark p-5 collapse border border-dark mt-3"
+          id="collapseExample{{req.id}}">
+          <form action="/Admin" method="post">
+            <div class="form-floating mb-4">
+              <p>Name</p>
+              <p>{{req.name}}</p>
+            </div>
+            <div class="form-floating mb-4">
+              <p>Phone Number</p>
+              <p>{{req.phone}}</p>
+            </div>
+            <div class="form-floating mb-4">
+              <p>Email</p>
+              <p>{{req.email}}</p>
+            </div>
+            <div class="form-floating mb-4">
+              <p>Username</p>
+              <p>{{req.username}}</p>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <input type="radio" id="accept" name="acc-rej" value="1{{req.id}}">
+                <label for="accept">Accept</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="radio" id="reject" name="acc-rej" value="0{{req.id}}">
+                <label for="accept">Reject</label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
       </div>
-    <div class="form-floating mb-4">
-    <p>Phone Number</p>
-    <p>{{req.phone}}</p>
+      {%endfor%}
+      {%else%}
+      <h3>There are no pending requests</h3>
+      {%endif%}
     </div>
-    <div class="form-floating mb-4">
-    <p>Email</p>
-    <p>{{req.email}}</p>
+
+
+
+
+
+    <div class="" style="margin-top: 150px; margin-bottom: 100px;">
+      <form class="appoint-form appoint-form-none" id="cust-detail" action="/Admin-delete" method="post">
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th>User ID</th>
+              <th>Name</th>
+              <th>Phone no</th>
+              <th>Email</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for user in uslist%}
+            {%if user.role=='C'%}
+            <tr>
+              <td>{{user.id}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.phone}}</td>
+              <td>{{user.email}}</td>
+              <td><button type="submit" class="btn btn-outline-dark" name="acc-id" value="{{user.id}}">Delete</button>
+              </td>
+            </tr>
+            {%endif%}
+            {%endfor%}
+          </tbody>
+
+        </table>
+      </form>
+
     </div>
-    <div class="form-floating mb-4">
-    <p>Username</p>
-    <p>{{req.username}}</p>
+    <br>
+
+    <div class="staff-details" style="margin-top: 150px; margin-bottom: 100px;">
+      <form class="appoint-form appoint-form-none" id="staff-detail" action="/Admin-delete" method="post">
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th>User ID</th>
+              <th>Name</th>
+              <th>Phone no</th>
+              <th>Email</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for user in uslist%}
+            {%if user.role=='S'%}
+            <tr>
+              <td>{{user.id}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.phone}}</td>
+              <td>{{user.email}}</td>
+              <td><button type="submit" class="btn btn-outline-dark" name="acc-id" value="{{user.id}}">Delete</button>
+              </td>
+            </tr>
+            {%endif%}
+            {%endfor%}
+
+          </tbody>
+
+        </table>
+      </form>
+
     </div>
-    <div class="row">
-      <div class="col-sm-4">
-      <input type="radio" id="accept" name="acc-rej" value="1{{req.id}}">
-      <label for="accept">Accept</label>
-    </div>
-    <div class="col-sm-4">
-      <input type="radio" id="reject" name="acc-rej" value="0{{req.id}}">
-      <label for="accept">Reject</label>
-    </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
 
-
-</div>
-{%endfor%}
-
-
-
-
-<div class="" style="margin-top: 150px; margin-bottom: 100px;">
-  <form class="appoint-form appoint-form-none" id="cust-detail" >
-    <table class="table">
-      <thead class="table-dark">
-        <tr>
-          <th>Name</th>
-          <th>Phone no</th>
-          <th>Email</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {%for user in uslist%}
-        {%if user.role=='C'%}
-        <tr>
-          <td>{{user.name}}</td>
-          <td>{{user.phone}}</td>
-          <td>{{user.email}}</td>
-          <td><button type="submit" class="btn btn-outline-dark">Delete</button></td>
-        </tr>
-        {%endif%}
-        {%endfor%}
-      </tbody>
-      
-    </table>
-  </form>
-
-</div>
-<br>
-
-<div class="staff-details" style="margin-top: 150px; margin-bottom: 100px;">
-  <form class="appoint-form appoint-form-none" id="staff-detail">
-    <table class="table">
-      <thead class="table-dark">
-        <tr>
-          <th>Name</th>
-          <th>Phone no</th>
-          <th>Email</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {%for user in uslist%}
-        {%if user.role=='S'%}
-        <tr>
-          <td>{{user.name}}</td>
-          <td>{{user.phone}}</td>
-          <td>{{user.email}}</td>
-          <td><button type="submit" class="btn btn-outline-dark">Delete</button></td>
-        </tr>
-        {%endif%}
-        {%endfor%}
-        
-      </tbody>
-      
-    </table>
-  </form>
-
-</div>
-
-</div>
+  </div>
 </div>
 {%endblock%}
