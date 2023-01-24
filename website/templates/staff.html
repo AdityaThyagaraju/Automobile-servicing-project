@@ -117,49 +117,63 @@
 
 
 
-{%for req in reqlist%}
-<div style="margin-top: 150px; margin-bottom: 100px;">
-  <form class="appoint-form appoint-form-none " id="cust-req" action="/Staff" method="post">
-    <h3 class="d-flex justify-content-center pb-4">Request from Customer</h3>
-    <div class="form-floating mb-4">
-      <h5>Request no.</h5>
-      <p>{{req.id}}</p>
-      </div>
-    <div class="form-floating mb-4">
-    <h5>customer no</h5>
-    <p>{{req.cust_id}}</p>
-    </div>
-    <div class="form-floating mb-4">
-    <h5>vehical no</h5>
-    <p>{{req.veh_id}}</p>
-    </div>
-    <div class="form-floating mb-4">
-    <h5>Requested date</h5>
-    <p>{{req.selected_date}}</p><br>
-    </div>
-    <div class="form-floating mb-4">
-    <h5>Additional servive</h5>
-    {%for ser in req.req.split(',')%}
-    <p>{{ser}}</p><br>
-    {%endfor%}
-    </div>
-    <div class="row">
-      <h5>Decision</h5>
-      <div class="col-sm-4">
-      <input type="radio" id="accept" name="acc-rej" value="1{{req.id}}">
-      <label for="accept">Accept</label>
-    </div>
-    <div class="col-sm-4">
-      <input type="radio" id="reject" name="acc-rej" value="0{{req.id}}">
-      <label for="accept">Reject</label>
-    </div>
-    </div>
-    <button type="submit" class="btn btn-primary" style="background-image:linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); width: 100%;">Submit</button>
-  </form>
 
+<div style="margin-top: 150px; margin-bottom: 100px;" class="appoint-form appoint-form-none" id="cust-req">
+
+    
+      <h3 class="pb-4">Request from Customer</h3>
+        <hr>
+        {%for req in reqlist%}
+    <div class="rounded-3 p-3 mt-1" style="background-color:rgba(33, 7, 33, 0.91)">
+    <span class="fw-bold text-light">Request number :</span>
+          <span class=" text-light">{{req.id}}</span>
+          <a class="float-end text-light" data-bs-toggle="collapse" href="#collapseExample{{req.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+            view details
+          </a>
+          <div class="card card-body rounded outline-dark p-5 collapse border border-dark mt-3" id="collapseExample{{req.id}}">
+            <form action="/Staff" method="post">
+              <div class="form-floating mb-4">
+                <h5>Request no.</h5>
+                <p>{{req.id}}</p>
+                </div>
+              <div class="form-floating mb-4">
+              <h5>customer no</h5>
+              <p>{{req.cust_id}}</p>
+              </div>
+              <div class="form-floating mb-4">
+              <h5>vehical no</h5>
+              <p>{{req.veh_id}}</p>
+              </div>
+              <div class="form-floating mb-4">
+              <h5>Requested date</h5>
+              <p>{{req.selected_date}}</p><br>
+              </div>
+              <div class="form-floating mb-4">
+              <h5>Additional servive</h5>
+              {%for ser in req.req.split(',')%}
+              <p>{{ser}}</p><br>
+              {%endfor%}
+              </div>
+              <div class="row">
+                <h5>Decision</h5>
+                <div class="col-sm-4">
+                <input type="radio" id="accept" name="acc-rej" value="1{{req.id}}">
+                <label for="accept">Accept</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="radio" id="reject" name="acc-rej" value="0{{req.id}}">
+                <label for="accept">Reject</label>
+              </div>
+              </div>
+              <button type="submit" class="btn text-light mt-1" style="background-color:rgba(33, 7, 33, 0.91); width: 100%;">Submit</button>
+            </form>
+          </div>  
+    </div>
+    {%endfor%}
+    
 
 </div>
-{%endfor%}
+
 
 
 <div class="" style="margin-top: 150px; margin-bottom: 100px;">
@@ -224,7 +238,7 @@
             </div>
               
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" style="background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">Submit</button>
     </form>
 </div>
 </div>
