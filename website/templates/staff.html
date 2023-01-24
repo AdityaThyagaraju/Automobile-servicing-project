@@ -5,49 +5,49 @@
   <li class="dropdown custom-accicon-div active d-flex justify-content-center align-items-center ">
     <a href="#" class="custom-accicon fa-solid fa-user" data-bs-toggle="dropdown" aria-expanded="false"></a>
     <div class="dropdown-menu">
-        <div class="row g-0 custom-cust-card ">
-            <div class="col-sm-4 gradient-custom text-center text-white"
-              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-              <i class="custom-accicon-form fa-solid fa-user"></i>
-              <h5>{{user.name}}</h5>
-              <p>Staff</p>
-              <i class="far fa-edit mb-5"></i>
-            </div>
-            <div class="col-sm-8">
-              <div class="card-body p-4">
-                <h6>Information</h6>
-                <hr class="mt-0 mb-4">
-                <div class="row pt-1">
-                  <div class="col-6 mb-3">
-                    <h6>Email</h6>
-                    <p >{{user.email}}</p>
-                  </div>
-                  <div class="col-6 mb-3">
-                    <h6>Phone</h6>
-                    <p >{{user.phone}}</p>
-                  </div>
-                </div>
-                <h6>Skills</h6>
-                <hr class="mt-0 mb-4">
-                <div class="row pt-1">
-                  <div class="col-6 mb-3">
-                    <h6>Good Communication</h6><br>
-                    <p >Well trained</p>
-                  </div>
-                  <div class="col-6 mb-3">
-                    <h6>High work efficiency</h6><br>
-                    <p>Highly Rated</p>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-start">
-                  <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                  <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                  <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
-                </div>
+      <div class="row g-0 custom-cust-card ">
+        <div class="col-sm-4 gradient-custom text-center text-white"
+          style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+          <i class="custom-accicon-form fa-solid fa-user"></i>
+          <h5>{{user.name}}</h5>
+          <p>Staff</p>
+          <i class="far fa-edit mb-5"></i>
+        </div>
+        <div class="col-sm-8">
+          <div class="card-body p-4">
+            <h6>Information</h6>
+            <hr class="mt-0 mb-4">
+            <div class="row pt-1">
+              <div class="col-6 mb-3">
+                <h6>Email</h6>
+                <p>{{user.email}}</p>
               </div>
+              <div class="col-6 mb-3">
+                <h6>Phone</h6>
+                <p>{{user.phone}}</p>
+              </div>
+            </div>
+            <h6>Skills</h6>
+            <hr class="mt-0 mb-4">
+            <div class="row pt-1">
+              <div class="col-6 mb-3">
+                <h6>Good Communication</h6><br>
+                <p>Well trained</p>
+              </div>
+              <div class="col-6 mb-3">
+                <h6>High work efficiency</h6><br>
+                <p>Highly Rated</p>
+              </div>
+            </div>
+            <div class="d-flex justify-content-start">
+              <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+              <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+              <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
   </li>
   <li class="nav-item" style="padding: 0%;">
     <a class="nav-link" href="/Logout" style="display:inline-block; padding-left: 1px;">Logout</a>
@@ -59,10 +59,11 @@
 {%with messages = get_flashed_messages()%}
 {%for message in messages%}
 {%if message%}
-<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsgstaff" style="display: block;" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
+<div class="alert active fade bd-example-modal-sm modal show" role="dialog" id="loginmsgstaff" style="display: block;"
+  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-modal="true">
   <div class=" modal-dialog modal-sm d-flex ">
-    <div class=" modal-content custom-modal1" >
-      <button type="button" class="btn ms-auto" data-bs-dismiss="alert" >&times;</button>
+    <div class=" modal-content custom-modal1">
+      <button type="button" class="btn ms-auto" data-bs-dismiss="alert">&times;</button>
       <h3 style="display: inline;">{{message[0]}} </h3>
       <hr>
       <p>{{message[1]}}</p>
@@ -81,19 +82,19 @@
 
 <div class="row">
 
-  <div class="dashboard col-sm-3" >
+  <div class="dashboard col-sm-3">
     <div style="position: fixed;">
       <h3 style="color: azure; margin-left: 15px">DashBoard</h3>
       <ul style=" display: inline-block; list-style: none;">
-          <li>
-              <a id="from-cust-req" href="#">Customer requests</a>
-          </li>
-          <li>
-              <a id="gen-bill" href="#">Generate Bill</a>
-          </li>
-          <li>
-              <a id="payment-dash" href="#">Payment Status</a>
-          </li>
+        <li>
+          <a id="from-cust-req" href="#">Customer requests</a>
+        </li>
+        <li>
+          <a id="gen-bill" href="#">Generate Bill</a>
+        </li>
+        <li>
+          <a id="payment-dash" href="#">Payment Status</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -101,62 +102,66 @@
 
 
 
-<div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
+  <div class="col-sm-9 d-flex justify-content-center align-items-center" id="cust-body">
 
 
 
 
-  <!-- alert-div -->
-<div class="alert appoint-form hidden-small" id="request-alert" style="text-align:center">
-  <h2>Welcome to Alpha Motor works</h2> 
-  <br>
-  <p> Please respond to the customers requested services</p>
-  <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
-</div>
+    <!-- alert-div -->
+    <div class="alert appoint-form" id="request-alert" style="text-align:center">
+      <h2>Welcome to Alpha Motor works</h2>
+      <br>
+      <p> Please respond to the customers requested services</p>
+      <button class="btn" data-bs-dismiss="alert">Ok, Got it</button>
+    </div>
 
 
 
 
 
-<div style="margin-top: 150px; margin-bottom: 100px;" class="appoint-form appoint-form-none" id="cust-req">
 
-    
+    <div style="margin-top: 150px; margin-bottom: 100px;" class="appoint-form appoint-form-none" id="cust-req">
+
+
       <h3 class="pb-4">Request from Customer</h3>
-        <hr>
-        {%for req in reqlist%}
-    <div class="rounded-3 p-3 mt-1" style="background-color:rgba(33, 7, 33, 0.91)">
-    <span class="fw-bold text-light">Request number :</span>
-          <span class=" text-light">{{req.id}}</span>
-          <a class="float-end text-light" data-bs-toggle="collapse" href="#collapseExample{{req.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-            view details
-          </a>
-          <div class="card card-body rounded outline-dark p-5 collapse border border-dark mt-3" id="collapseExample{{req.id}}">
-            <form action="/Staff" method="post">
-              <div class="form-floating mb-4">
-                <h5>Request no.</h5>
-                <p>{{req.id}}</p>
-                </div>
-              <div class="form-floating mb-4">
+      <hr>
+      {%if reqlist%}
+      {%for req in reqlist%}
+      <div class="rounded-3 p-3 mt-1" style="background-color:rgba(33, 7, 33, 0.91)">
+        <span class="fw-bold text-light">Request number :</span>
+        <span class=" text-light">{{req.id}}</span>
+        <a class="float-end text-light" data-bs-toggle="collapse" href="#collapseExample{{req.id}}" role="button"
+          aria-expanded="false" aria-controls="collapseExample">
+          view details
+        </a>
+        <div class="card card-body rounded outline-dark p-5 collapse border border-dark mt-3"
+          id="collapseExample{{req.id}}">
+          <form action="/Staff" method="post">
+            <div class="form-floating mb-4">
+              <h5>Request no.</h5>
+              <p>{{req.id}}</p>
+            </div>
+            <div class="form-floating mb-4">
               <h5>customer no</h5>
               <p>{{req.cust_id}}</p>
-              </div>
-              <div class="form-floating mb-4">
+            </div>
+            <div class="form-floating mb-4">
               <h5>vehical no</h5>
               <p>{{req.veh_id}}</p>
-              </div>
-              <div class="form-floating mb-4">
+            </div>
+            <div class="form-floating mb-4">
               <h5>Requested date</h5>
               <p>{{req.selected_date}}</p><br>
-              </div>
-              <div class="form-floating mb-4">
+            </div>
+            <div class="form-floating mb-4">
               <h5>Additional servive</h5>
               {%for ser in req.req.split(',')%}
               <p>{{ser}}</p><br>
               {%endfor%}
-              </div>
-              <div class="row">
-                <h5>Decision</h5>
-                <div class="col-sm-4">
+            </div>
+            <div class="row">
+              <h5>Decision</h5>
+              <div class="col-sm-4">
                 <input type="radio" id="accept" name="acc-rej" value="1{{req.id}}">
                 <label for="accept">Accept</label>
               </div>
@@ -164,36 +169,40 @@
                 <input type="radio" id="reject" name="acc-rej" value="0{{req.id}}">
                 <label for="accept">Reject</label>
               </div>
-              </div>
-              <button type="submit" class="btn text-light mt-1" style="background-color:rgba(33, 7, 33, 0.91); width: 100%;">Submit</button>
-            </form>
-          </div>  
+            </div>
+            <button type="submit" class="btn text-light mt-1"
+              style="background-color:rgba(33, 7, 33, 0.91); width: 100%;">Submit</button>
+          </form>
+        </div>
+      </div>
+      {%endfor%}
+      {%else%}
+      <h3>There are no pending requests</h3>
+      {%endif%}
+
+
     </div>
-    {%endfor%}
-    
-
-</div>
 
 
 
-<div class="" style="margin-top: 150px; margin-bottom: 100px;">
-    <form class="appoint-form appoint-form-none " id="bill-form" action="/Staff-bill" method="post">
+    <div class="" style="margin-top: 150px; margin-bottom: 100px;">
+      <form class="appoint-form appoint-form-none " id="bill-form" action="/Staff-bill" method="post">
         <h3 class="d-flex justify-content-center pb-4">List of items</h3>
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <!-- Text input -->
         <div class="form-floating mb-4">
-          <input type="text" id="form6Example1" class="form-control" name="custId" placeholder="name@example.com"/>
+          <input type="text" id="form6Example1" class="form-control" name="custId" placeholder="name@example.com" />
           <label class="form-label" for="form6Example1">Customer Id</label>
         </div>
         <div class="form-floating mb-4">
-          <input type="text" id="form6Example2" class="form-control" name="chasisNo" placeholder="name@example.com"/>
+          <input type="text" id="form6Example2" class="form-control" name="chasisNo" placeholder="name@example.com" />
           <label class="form-label" for="form6Example2">Chasis Number</label>
         </div>
         <div class="form-floating mb-4">
-          <input type="text" id="form6Example3" class="form-control" name="orderId" placeholder="name@example.com"/>
+          <input type="text" id="form6Example3" class="form-control" name="orderId" placeholder="name@example.com" />
           <label class="form-label" for="form6Example3">Order number</label>
         </div>
-      
+
         <!-- Text input -->
         <!-- <div class="form-floating mb-4">
           <input type="checkbox" id="form6Example4" class="form-control" name="req_service" placeholder="name@example.com"/>
@@ -210,16 +219,16 @@
               <input type="checkbox" id="check1" name="service" value="Air Filter">b
               <input style="width: 150px;" class="form-control" type="text" id="value1" name="price2" placeholder="Rs">
               <br>
-              
+
             </div>
             <div class="col-sm-3">
-                <input type="checkbox" id="check1" name="service" value="Battery">c
-                <input style="width: 150px;" class="form-control" type="text" id="value1" name="price3" placeholder="Rs">
+              <input type="checkbox" id="check1" name="service" value="Battery">c
+              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price3" placeholder="Rs">
               <br>
               <input type="checkbox" id="check1" name="service" value="Spark Plug">d
               <input style="width: 150px;" class="form-control" type="text" id="value1" name="price4" placeholder="Rs">
             </div>
-            
+
             <div class="col-sm-3">
               <input type="checkbox" id="check1" name="service" value="Fuel Filter">e
               <input style="width: 150px;" class="form-control" type="text" id="value1" name="price5" placeholder="Rs">
@@ -227,21 +236,44 @@
               <input type="checkbox" id="check1" name="service" value="Body Wash">f
               <input style="width: 150px;" class="form-control" type="text" id="value1" name="price6" placeholder="Rs">
               <br>
-              
+
             </div>
             <div class="col-sm-3">
-                <input type="checkbox" id="check1" name="service" value="Wheel Alignment">g
-                <input style="width: 150px;" class="form-control" type="text" id="value1" name="price7" placeholder="Rs">
+              <input type="checkbox" id="check1" name="service" value="Wheel Alignment">g
+              <input style="width: 150px;" class="form-control" type="text" id="value1" name="price7" placeholder="Rs">
               <br>
               <input type="checkbox" id="check1" name="service" value="Wheel Balance">h
               <input style="width: 150px;" class="form-control" type="text" id="value1" name="price8" placeholder="Rs">
             </div>
-              
-        <br>
-        <button type="submit" class="btn btn-primary" style="background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">Submit</button>
-    </form>
-</div>
-</div>
+
+            <br>
+            <button type="submit" class="btn btn-primary"
+              style="background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);">Submit</button>
+            </div>
+            </div>
+      </form>
+    </div>
+
+    <div style="margin-top: 150px; margin-bottom: 100px" class="appoint-form appoint-form-none" id="pen-bill">
+      <h3 class="pb-4">Pending payement</h3>
+      <hr />
+      {%if penlist%} {%for Bill in penlist%}
+      <div class="rounded-3 p-3 mt-1" style="background-color: rgba(33, 7, 33, 0.91)">
+        <span class="fw-bold text-light">Bill number :</span>
+        <a class="float-end text-light" data-bs-toggle="collapse" href="#collapseExample{{Bill.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+          view details
+        </a>
+        <div class="card card-body rounded outline-dark p-5 collapse border border-dark mt-3" id="collapseExample{{Bill.id}}">
+         <span>Bill no:{{Bill.id}} Customer no:{{Bill.cust_id}} vehicle id:{{Bill.veh_id}} order id:{{Bill.order_id}} date:{{Bill.date}}</span>
+        </div>  
+      </div>
+      {%endfor%} {%else%}
+      <h3>There are no pending requests</h3>
+      {%endif%}
+    </div>
+
+
+  </div>
 
 </div>
 {%endblock%}
